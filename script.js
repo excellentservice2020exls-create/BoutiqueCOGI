@@ -328,7 +328,41 @@ document.addEventListener('DOMContentLoaded', () => {
         'tiktok':    'QG1vbl9jb21wdGVfdGlrdG9r',   //@boutique_cogi  
         'instagram': 'bW9uX2luc3RhX29mZmljaWVs'     //@boutique_cogi
     };
+    document.body.addEventListener('click', function(e) {
+        // Cherche si l'élément cliqué (ou un de ses parents) possède l'attribut data-social
+        const target = e.target.closest('[data-social]');
+        
+        if (target) {
+            e.preventDefault();
+            const network = target.getAttribute('data-social');
+            const customMessage = target.getAttribute('data-message') || '';
+            
+            if (socialData[network]) {
+                const decoded = atob(socialData[network]);
+                let finalUrl = "";
 
+                if (network === 'whatsapp') {
+                    // Ajout de l'encodage du message personnalisé s'il existe
+                    const textParam = customMessage ? `?text=${encodeURIComponent(customMessage)}` : '';
+                    finalUrl = `https://wa.me/${decoded.replace('+', '')}${textParam}`;
+                } else if (network === 'facebook') {
+                    finalUrl = `https://facebook.com/${decoded}`;
+                } else if (network === 'telegram') {
+                    finalUrl = `https://t.me/${decoded}`;
+                } else if (network === 'tiktok') {
+                    finalUrl = `https://tiktok.com/${decoded}`;
+                } else if (network === 'instagram') {
+                    finalUrl = `https://instagram.com/${decoded}`;
+                }
+
+                if (finalUrl) {
+                    window.open(finalUrl, '_blank');
+                }
+            }
+        }
+    });
+    /* 
+    
     // On cherche TOUS les éléments qui ont l'attribut data-social
     document.querySelectorAll('[data-social]').forEach(element => {
         element.addEventListener('click', function(e) {
@@ -360,6 +394,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+    */
     /* ============================================
    ALTERNANCE DES VIDÉOS HERO
    ============================================ */
@@ -385,3 +420,144 @@ function setupVideoSwitch() {
 document.addEventListener('DOMContentLoaded', () => {
     setupVideoSwitch();
 });
+/* ============================================
+       14. GESTION DU CATALOGUE (Méthode Array)
+       ============================================ */
+    
+    // 1. Définition des sources de données (Arrays)
+    // 1. Définition des sources de données
+    const produitsHabitFemme = [
+        { 
+            id: "f1", 
+            nom: "Robe Lumineux à motif floral brillant", 
+            prix: "95$", 
+            taille: "42 à 48", 
+            couleur: "Jaune-Vert vif", 
+            image: "Media-p-20260218/pict09.jpeg" 
+        },
+        { 
+            id: "f2", 
+            nom: "Robe Elégante ", 
+            prix: "95$", 
+            taille: "42 à 48", 
+            couleur: "Noir", 
+            image: "Media-p-20260218/pict14.jpeg" 
+        },
+        { 
+            id: "f3", 
+            nom: "Robe Elégante à motif floral foncé", 
+            prix: "95$", 
+            taille: "42 à 48", 
+            couleur: "Brun-Marron", 
+            image: "Media-p-20260218/pict12.jpeg" 
+        },
+        { 
+            id: "f4", 
+            nom: "Robe Elégante ", 
+            prix: "95$", 
+            taille: "42 à 48", 
+            couleur: "Rouge", 
+            image: "Media-p-20260218/pict15.jpeg" 
+        }
+    ];
+
+    const produitsHabitHomme = [
+        { 
+            id: "h1", 
+            nom: "Costume Bleu Nuit", 
+            prix: "180$", 
+            taille: "50, 52, 54", 
+            couleur: "Bleu Nuit", 
+            image: "Media-p-20260218/homme01.jpeg" 
+        },
+        { 
+            id: "h2", 
+            nom: "Chemise Coton Blanc", 
+            prix: "45$", 
+            taille: "M, L", 
+            couleur: "Blanc", 
+            image: "Media-p-20260218/homme02.jpeg" 
+        }
+    ];
+
+    const produitsHabitEnfant = [
+        { 
+            id: "e1", 
+            nom: "Pantalon Enfant Bleu", 
+            prix: "30$", 
+            taille: "8, 10, 12", 
+            couleur: "Bleu", 
+            image: "Media-p-20260218/enfant01.jpeg" 
+        },
+        { 
+            id: "e2", 
+            nom: "T-shirt Enfant Rouge", 
+            prix: "25$", 
+            taille: "8, 10, 12", 
+            couleur: "Rouge", 
+            image: "Media-p-20260218/enfant02.jpeg" 
+        }
+    ];
+
+    const produitsChaussure = [
+        // Ajoutez vos objets ici
+    ];
+
+    const produitsSac = [
+        // Ajoutez vos objets ici
+    ];
+
+    const produitsAccessoire = [
+        // Ajoutez vos objets ici
+    ];
+// 2. Moteur de rendu dynamique
+    function afficherProduits(produits, conteneurId) {
+        const conteneur = document.getElementById(conteneurId);
+        
+        if (!conteneur || produits.length === 0) {
+            if(conteneur) conteneur.innerHTML = `<p style="text-align:center; width:100%; color:var(--text-secondary);">Bientôt de nouveaux articles...</p>`;
+            return;
+        }
+
+        const html = produits.map(produit => `
+            <div class="product-card fade-in-up">
+                <div class="product-image-container">
+                    <img src="${produit.image}" alt="${produit.nom}" loading="lazy">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">${produit.nom}</h3>
+                    
+                    <div class="product-badges">
+                        <span class="badge badge-size">
+                            <i class="fas fa-ruler-combined"></i> ${produit.taille}
+                        </span>
+                        <span class="badge badge-color">
+                            <i class="fas fa-palette"></i> ${produit.couleur}
+                        </span>
+                    </div>
+
+                    <p class="product-price">${produit.prix}</p>
+                    
+                    <button class="btn-buy" 
+                        data-social="whatsapp" 
+                        data-message="Bonjour Boutique COGI, je souhaite commander :%0A- Article : ${produit.nom} (Réf: ${produit.id})%0A- Taille : ${produit.taille}%0A- Couleur : ${produit.couleur}%0A- Prix : ${produit.prix}">
+                        <i class="fab fa-whatsapp"></i> Commander
+                    </button>
+                </div>
+            </div>
+        `).join('');
+
+        conteneur.innerHTML = html;
+        
+        if (typeof fadeObserver !== 'undefined') {
+            document.querySelectorAll(`#${conteneurId} .fade-in-up`).forEach(el => fadeObserver.observe(el));
+        }
+    }
+
+    // 3. Exécution globale
+    afficherProduits(produitsHabitFemme, 'grid-habit-femme');
+    afficherProduits(produitsHabitHomme, 'grid-habit-homme');
+    afficherProduits(produitsHabitEnfant, 'grid-habit-enfant');
+    afficherProduits(produitsChaussure, 'grid-habit-chaussure');
+    afficherProduits(produitsSac, 'grid-habit-sac');
+    afficherProduits(produitsAccessoire, 'grid-habit-accessoire');

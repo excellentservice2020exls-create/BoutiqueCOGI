@@ -83,7 +83,7 @@ img {
     display: block;
 }
 
-/* ---- Scrollbar ---- */
+/* ---- Scrollbar ---- 
 ::-webkit-scrollbar {
     width: 8px;
 }
@@ -94,7 +94,28 @@ img {
     background: linear-gradient(180deg, var(--turquoise), var(--rose));
     border-radius: 10px;
 }
-
+*/
+/* ==================== PERSONNALISATION SCROLLBAR ==================== */
+/* Chrome, Edge, and Safari */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-card); /* Utilise ton fond de carte pour la cohérence */
+}
+::-webkit-scrollbar-thumb {
+  background-color: linear-gradient(180deg, var(--turquoise), var(--rose)); /* Turquoise par défaut */
+  border-radius: 20px;
+  border: 2px solid var(--bg-card);
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--rose); /* Passage au Rose au survol */
+}
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--turquoise) var(--bg-card);
+}
 /* ============================================
    NAVBAR
    ============================================ */

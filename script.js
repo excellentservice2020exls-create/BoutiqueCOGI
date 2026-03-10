@@ -403,10 +403,10 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         { 
             id: "f2", 
-            nom: "Robe Elégante ", 
+            nom: "Robe Elégante Espoll", 
             prix: "95$", 
             taille: "42 à 48", 
-            couleur: "Noir", 
+            couleur: "Noir avec paillette", 
             image: "Media-p-20260218/pict14.jpeg" 
         },
         { 
@@ -419,122 +419,122 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         { 
             id: "f4", 
-            nom: "Robe Elégante ", 
+            nom: "Robe Elégante Espoll ", 
             prix: "95$", 
             taille: "42 à 48", 
-            couleur: "Rouge", 
+            couleur: "Rouge avec paillette", 
             image: "Media-p-20260218/pict15.jpeg" 
         },
         { 
             id: "f5", 
-            nom: "Robe Plissée à Ceinture Rouge", 
-            prix: "95$", 
-            taille: "42 à 48", 
-            couleur: "Rouge", 
+            nom: "Robe Plissée Zera à Ceinture Rouge", 
+            prix: "65$", 
+            taille: "44 à 50", 
+            couleur: "Rouge sang", 
             image: "Media-p-20260308/FEMME/WhatsApp Image 2026-03-08 at 11.02.31 PM (1).jpeg" 
         },
         { 
             id: "f6", 
-            nom: "Complet Bras Cassé Bleu ", 
-            prix: "95$", 
-            taille: "42 à 48", 
+            nom: "Complet pantalon et gilet lovelf Bras Cassé Bleu  ", 
+            prix: "75$", 
+            taille: "36 à 42", 
             couleur: "Bleu", 
             image: "Media-p-20260308/FEMME/WhatsApp Image 2026-03-08 at 11.02.31 PM (2).jpeg" 
         },
         { 
             id: "f7", 
-            nom: "Robe Plissée à Ceinture Noir", 
-            prix: "95$", 
-            taille: "42 à 48", 
-            couleur: "Noir", 
+            nom: "Robe Plissée Zera à Ceinture Noire", 
+            prix: "65$", 
+            taille: "44 à 50", 
+            couleur: "Noir - Blanc", 
             image: "Media-p-20260308/FEMME/WhatsApp Image 2026-03-08 at 11.02.31 PM.jpeg" 
         },
         { 
             id: "f8", 
-            nom: "Complet Pantalon ", 
-            prix: "95$", 
-            taille: "42 à 48", 
-            couleur: "Noir - Blanc", 
+            nom: "Blouse blanche Unique avec boutons décoratifs ", 
+            prix: "35$", 
+            taille: "36 à 50", 
+            couleur: "Blanc", 
             image: "Media-p-20260308/FEMME/WhatsApp Image 2026-03-08 at 11.02.32 PM (1).jpeg" 
         },
         { 
             id: "f9", 
-            nom: "Robe Plissée à Ceinture Rouge", 
+            nom: "Blouse Rouge Unique", 
             prix: "95$", 
-            taille: "42 à 48", 
+            taille: "36 à 50", 
             couleur: "Rouge", 
             image: "Media-p-20260308/FEMME/WhatsApp Image 2026-03-08 at 11.02.32 PM (2).jpeg" 
         },
         { 
             id: "f10", 
-            nom: "Complet Bras Cassé Bleu ", 
-            prix: "95$", 
-            taille: "42 à 48", 
-            couleur: "Bleu", 
+            nom: "Complet pantalon gilet lovelf bras cassé", 
+            prix: "75$", 
+            taille: "36 à 42", 
+            couleur: "Vert clair", 
             image: "Media-p-20260308/FEMME/WhatsApp Image 2026-03-08 at 11.02.32 PM.jpeg" 
         },
         { 
             id: "f11", 
-            nom: "Robe Plissée à Ceinture Noir", 
-            prix: "95$", 
+            nom: "Robe foulard Soft à Ceinture Orange", 
+            prix: "75$", 
             taille: "42 à 48", 
-            couleur: "Noir", 
+            couleur: "Bleue fleurie", 
             image: "Media-p-20260308/FEMME/WhatsApp Image 2026-03-08 at 11.02.33 PM (1).jpeg" 
         },
         { 
             id: "f12", 
-            nom: "Complet Pantalon ", 
-            prix: "95$", 
-            taille: "42 à 48", 
-            couleur: "Noir - Blanc", 
+            nom: "Pantalon Jeans Zara ", 
+            prix: "40$", 
+            taille: "42 à 52", 
+            couleur: "Bleue ciel - Bleu foncé", 
             image: "Media-p-20260308/FEMME/WhatsApp Image 2026-03-08 at 11.02.33 PM.jpeg" 
         },
         { 
             id: "f13", 
-            nom: "Complet Pantalon ", 
-            prix: "95$", 
-            taille: "42 à 48", 
-            couleur: "Noir - Blanc", 
+            nom: "Robe dentelle Davina ", 
+            prix: "65$", 
+            taille: "36 à 42", 
+            couleur: "Bleue turquoise", 
             image: "Media-p-20260308/FEMME/WhatsApp Image 2026-03-08 at 11.02.34 PM (1).jpeg" 
         },
         { 
             id: "f14", 
-            nom: "Robe Plissée à Ceinture Rouge", 
-            prix: "95$", 
-            taille: "42 à 48", 
-            couleur: "Rouge", 
+            nom: "Robe droite Marchesa grande taille", 
+            prix: "60$", 
+            taille: "50 à 56", 
+            couleur: "Rouge bordeau", 
             image: "Media-p-20260308/FEMME/WhatsApp Image 2026-03-08 at 11.02.34 PM (2).jpeg" 
         },
         { 
             id: "f15", 
-            nom: "Complet Bras Cassé Bleu ", 
-            prix: "95$", 
+            nom: "Robe foulard Soft fleurie", 
+            prix: "65$", 
             taille: "42 à 48", 
-            couleur: "Bleu", 
+            couleur: "Jaune", 
             image: "Media-p-20260308/FEMME/WhatsApp Image 2026-03-08 at 11.02.34 PM.jpeg" 
         },
         { 
             id: "f16", 
-            nom: "Robe Plissée à Ceinture Noir", 
-            prix: "95$", 
-            taille: "42 à 48", 
-            couleur: "Noir", 
+            nom: "Complet pantalon + Blousette + Veste pour Enfant", 
+            prix: "45$", 
+            taille: "8 à 15 ans", 
+            couleur: "Orange avec raillure", 
             image: "Media-p-20260308/FEMME/WhatsApp Image 2026-03-08 at 11.03.26 PM.jpeg" 
         },
         { 
             id: "f17", 
-            nom: "Complet Pantalon ", 
-            prix: "95$", 
+            nom: "Robe chic avec ceinture ", 
+            prix: "75$", 
             taille: "42 à 48", 
-            couleur: "Noir - Blanc", 
+            couleur: "Noir - Mauve - Vert", 
             image: "Media-p-20260308/FEMME/WhatsApp Image 2026-03-08 at 11.05.11 PM (1).jpeg" 
         },
         { 
             id: "f18", 
-            nom: "Complet Bras Cassé Bleu ", 
-            prix: "95$", 
+            nom: "Tailleur dame jupe et veste Melorin", 
+            prix: "85$", 
             taille: "42 à 48", 
-            couleur: "Bleu", 
+            couleur: "Bleu de nuit", 
             image: "Media-p-20260308/FEMME/WhatsApp Image 2026-03-08 at 11.05.11 PM.jpeg" 
         }
     ];
@@ -675,7 +675,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     
                     <button class="btn-buy" 
                         data-social="whatsapp" 
-                        data-message="Bonjour Boutique COGI, je souhaite commander cet article : ${produit.nom} (Réf: ${produit.id}) - Taille : ${produit.taille} - Couleur : ${produit.couleur} - Prix : ${produit.prix}">
+                        data-message="Bonjour Boutique COGI, je souhaite commander :Cet article : ${produit.nom} (Réf: ${produit.id}) - Taille : ${produit.taille} - Couleur : ${produit.couleur} - Prix : ${produit.prix}">
                         <i class="fab fa-whatsapp"></i> Commander
                     </button>
                 </div>

@@ -361,40 +361,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
-    /* 
     
-    // On cherche TOUS les éléments qui ont l'attribut data-social
-    document.querySelectorAll('[data-social]').forEach(element => {
-        element.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            
-            // On récupère le nom du réseau (ex: "whatsapp")
-            const network = this.getAttribute('data-social');
-            
-            if (socialData[network]) {
-                const decoded = atob(socialData[network]);
-                let finalUrl = "";
-
-                if (network === 'whatsapp') {
-                    finalUrl = `https://wa.me/${decoded.replace('+', '')}`;
-                } else if (network === 'facebook') {
-                    finalUrl = `https://facebook.com/${decoded}`;
-                } else if (network === 'telegram') {
-                    finalUrl = `https://t.me/${decoded}`;
-                } else if (network === 'tiktok') {
-                    finalUrl = `https://tiktok.com/${decoded}`;
-                } else if (network === 'instagram') {
-                    finalUrl = `https://instagram.com/${decoded}`;
-                }
-
-                if (finalUrl) {
-                    window.open(finalUrl, '_blank');
-                }
-            }
-        });
-    });
-    */
     /* ============================================
    ALTERNANCE DES VIDÉOS HERO
    ============================================ */
@@ -425,8 +392,7 @@ document.addEventListener('DOMContentLoaded', () => {
        ============================================ */
     
     // 1. Définition des sources de données (Arrays)
-    // 1. Définition des sources de données
-    const produitsHabitFemme = [
+       const produitsHabitFemme = [
         { 
             id: "f1", 
             nom: "Robe Lumineux à motif floral brillant", 
@@ -458,45 +424,191 @@ document.addEventListener('DOMContentLoaded', () => {
             taille: "42 à 48", 
             couleur: "Rouge", 
             image: "Media-p-20260218/pict15.jpeg" 
+        },
+        { 
+            id: "f5", 
+            nom: "Robe Plissée à Ceinture Rouge", 
+            prix: "95$", 
+            taille: "42 à 48", 
+            couleur: "Rouge", 
+            image: "Media-p-20260308/FEMME/WhatsApp Image 2026-03-08 at 11.02.31 PM (1).jpeg" 
+        },
+        { 
+            id: "f6", 
+            nom: "Complet Bras Cassé Bleu ", 
+            prix: "95$", 
+            taille: "42 à 48", 
+            couleur: "Bleu", 
+            image: "Media-p-20260308/FEMME/WhatsApp Image 2026-03-08 at 11.02.31 PM (2).jpeg" 
+        },
+        { 
+            id: "f7", 
+            nom: "Robe Plissée à Ceinture Noir", 
+            prix: "95$", 
+            taille: "42 à 48", 
+            couleur: "Noir", 
+            image: "Media-p-20260308/FEMME/WhatsApp Image 2026-03-08 at 11.02.31 PM.jpeg" 
+        },
+        { 
+            id: "f8", 
+            nom: "Complet Pantalon ", 
+            prix: "95$", 
+            taille: "42 à 48", 
+            couleur: "Noir - Blanc", 
+            image: "Media-p-20260308/FEMME/WhatsApp Image 2026-03-08 at 11.02.32 PM (1).jpeg" 
+        },
+        { 
+            id: "f9", 
+            nom: "Robe Plissée à Ceinture Rouge", 
+            prix: "95$", 
+            taille: "42 à 48", 
+            couleur: "Rouge", 
+            image: "Media-p-20260308/FEMME/WhatsApp Image 2026-03-08 at 11.02.32 PM (2).jpeg" 
+        },
+        { 
+            id: "f10", 
+            nom: "Complet Bras Cassé Bleu ", 
+            prix: "95$", 
+            taille: "42 à 48", 
+            couleur: "Bleu", 
+            image: "Media-p-20260308/FEMME/WhatsApp Image 2026-03-08 at 11.02.32 PM.jpeg" 
+        },
+        { 
+            id: "f11", 
+            nom: "Robe Plissée à Ceinture Noir", 
+            prix: "95$", 
+            taille: "42 à 48", 
+            couleur: "Noir", 
+            image: "Media-p-20260308/FEMME/WhatsApp Image 2026-03-08 at 11.02.33 PM (1).jpeg" 
+        },
+        { 
+            id: "f12", 
+            nom: "Complet Pantalon ", 
+            prix: "95$", 
+            taille: "42 à 48", 
+            couleur: "Noir - Blanc", 
+            image: "Media-p-20260308/FEMME/WhatsApp Image 2026-03-08 at 11.02.33 PM.jpeg" 
+        },
+        { 
+            id: "f13", 
+            nom: "Complet Pantalon ", 
+            prix: "95$", 
+            taille: "42 à 48", 
+            couleur: "Noir - Blanc", 
+            image: "Media-p-20260308/FEMME/WhatsApp Image 2026-03-08 at 11.02.34 PM (1).jpeg" 
+        },
+        { 
+            id: "f14", 
+            nom: "Robe Plissée à Ceinture Rouge", 
+            prix: "95$", 
+            taille: "42 à 48", 
+            couleur: "Rouge", 
+            image: "Media-p-20260308/FEMME/WhatsApp Image 2026-03-08 at 11.02.34 PM (2).jpeg" 
+        },
+        { 
+            id: "f15", 
+            nom: "Complet Bras Cassé Bleu ", 
+            prix: "95$", 
+            taille: "42 à 48", 
+            couleur: "Bleu", 
+            image: "Media-p-20260308/FEMME/WhatsApp Image 2026-03-08 at 11.02.34 PM.jpeg" 
+        },
+        { 
+            id: "f16", 
+            nom: "Robe Plissée à Ceinture Noir", 
+            prix: "95$", 
+            taille: "42 à 48", 
+            couleur: "Noir", 
+            image: "Media-p-20260308/FEMME/WhatsApp Image 2026-03-08 at 11.03.26 PM.jpeg" 
+        },
+        { 
+            id: "f17", 
+            nom: "Complet Pantalon ", 
+            prix: "95$", 
+            taille: "42 à 48", 
+            couleur: "Noir - Blanc", 
+            image: "Media-p-20260308/FEMME/WhatsApp Image 2026-03-08 at 11.05.11 PM (1).jpeg" 
+        },
+        { 
+            id: "f18", 
+            nom: "Complet Bras Cassé Bleu ", 
+            prix: "95$", 
+            taille: "42 à 48", 
+            couleur: "Bleu", 
+            image: "Media-p-20260308/FEMME/WhatsApp Image 2026-03-08 at 11.05.11 PM.jpeg" 
         }
     ];
 
     const produitsHabitHomme = [
-        { 
-            id: "h1", 
-            nom: "Costume Bleu Nuit", 
-            prix: "180$", 
-            taille: "50, 52, 54", 
-            couleur: "Bleu Nuit", 
-            image: "Media-p-20260218/homme01.jpeg" 
-        },
-        { 
-            id: "h2", 
-            nom: "Chemise Coton Blanc", 
-            prix: "45$", 
-            taille: "M, L", 
-            couleur: "Blanc", 
-            image: "Media-p-20260218/homme02.jpeg" 
-        }
+         // Ajoutez vos objets ici
     ];
 
     const produitsHabitEnfant = [
         { 
             id: "e1", 
-            nom: "Pantalon Enfant Bleu", 
+            nom: "Robe Enfant Rose (Rouge, Bleu)", 
             prix: "30$", 
-            taille: "8, 10, 12", 
-            couleur: "Bleu", 
-            image: "Media-p-20260218/enfant01.jpeg" 
+            taille: "3 à 6 ans", 
+            couleur: "Rose", 
+            image: "Media-p-20260308/ENFANT/WhatsApp Image 2026-03-08 at 11.03.24 PM.jpeg" 
         },
         { 
             id: "e2", 
-            nom: "T-shirt Enfant Rouge", 
-            prix: "25$", 
-            taille: "8, 10, 12", 
+            nom: "Complet vest Enfant Rouge", 
+            prix: "45$", 
+            taille: "7, 9 et 10 ans", 
             couleur: "Rouge", 
-            image: "Media-p-20260218/enfant02.jpeg" 
-        }
+            image: "Media-p-20260308/ENFANT/WhatsApp Image 2026-03-08 at 11.03.25 PM.jpeg" 
+        },
+        { 
+            id: "e3", 
+            nom: "Chemise Enfant Garçon (Blanc)", 
+            prix: "30$", 
+            taille: "2 à 10 ans", 
+            couleur: "Blanc", 
+            image: "Media-p-20260308/ENFANT/WhatsApp Image 2026-03-08 at 11.03.24 PM (2).jpeg" 
+        },
+        { 
+            id: "e4", 
+            nom: "Blousette Pantalon Enfant Rose", 
+            prix: "35$", 
+            taille: "2, 5, 6 et 7 ans", 
+            couleur: "Rose-pink", 
+            image: "Media-p-20260308/ENFANT/WhatsApp Image 2026-03-08 at 11.03.26 PM.jpeg" 
+        },
+        { 
+            id: "e5", 
+            nom: "Robe Enfant Manche longue", 
+            prix: "30$", 
+            taille: "4 à 7 ans", 
+            couleur: "Brun-Marron", 
+            image: "Media-p-20260308/ENFANT/WhatsApp Image 2026-03-08 at 11.03.27 PM.jpeg" 
+        },
+        { 
+            id: "e6", 
+            nom: "Chemise Enfant Garçon (Brun)", 
+            prix: "30$", 
+            taille: "2 à 10 ans", 
+            couleur: "Brun-Marron", 
+            image: "Media-p-20260308/ENFANT/WhatsApp Image 2026-03-08 at 11.03.23 PM.jpeg" 
+        },
+        { 
+            id: "e7", 
+            nom: "Robe 2Temps pour Enfant", 
+            prix: "30$", 
+            taille: "2 à 5 ans", 
+            couleur: "Rouge-Blanc", 
+            image: "Media-p-20260308/ENFANT/WhatsApp Image 2026-03-08 at 11.03.28 PM.jpeg" 
+        },
+        { 
+            id: "e8", 
+            nom: "Chemise Enfant Garçon (Gris)", 
+            prix: "30$", 
+            taille: "2 à 10 ans", 
+            couleur: "Gris", 
+            image: "Media-p-20260308/ENFANT/WhatsApp Image 2026-03-08 at 11.03.24 PM (3).jpeg" 
+        },
+        
     ];
 
     const produitsChaussure = [
@@ -508,7 +620,30 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     const produitsAccessoire = [
-        // Ajoutez vos objets ici
+        { 
+            id: "a1", 
+            nom: "Chaussettes Homme Bleu Nuit", 
+            prix: "5$", 
+            taille: "40 - 44", 
+            couleur: "Noir", 
+            image: "Media-p-20260308/ACCESSOIRE/WhatsApp Image 2026-03-08 at 11.05.57 PM.jpeg" 
+        },
+        { 
+            id: "a2", 
+            nom: "SINGLET Coton (Blanc - Noir - Gris)", 
+            prix: "5$", 
+            taille: "S, M, L, XL, 2XL",
+            couleur: "Blanc", 
+            image: "Media-p-20260308/ACCESSOIRE/WhatsApp Image 2026-03-08 at 11.05.56 PM (1).jpeg" 
+        },
+        { 
+            id: "a3", 
+            nom: "Chaussettes Coton Blanc", 
+            prix: "5$", 
+            taille: "40 - 44", 
+            couleur: "Gris", 
+            image: "Media-p-20260308/ACCESSOIRE/WhatsApp Image 2026-03-08 at 11.05.56 PM.jpeg" 
+        }
     ];
 // 2. Moteur de rendu dynamique
     function afficherProduits(produits, conteneurId) {

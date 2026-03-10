@@ -675,7 +675,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     
                     <button class="btn-buy" 
                         data-social="whatsapp" 
-                        data-message="Bonjour Boutique COGI, je souhaite commander :Cet article : ${produit.nom} (Réf: ${produit.id}) - Taille : ${produit.taille} - Couleur : ${produit.couleur} - Prix : ${produit.prix}">
+                        data-message="Bonjour Boutique COGI, je souhaite commander cet article : ${produit.nom} (Réf: ${produit.id}) - Taille : ${produit.taille} - Couleur : ${produit.couleur} - Prix : ${produit.prix}">
                         <i class="fab fa-whatsapp"></i> Commander
                     </button>
                 </div>

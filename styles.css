@@ -1,7 +1,7 @@
-/* ============================================
-   BOUTIQUE COGI — Luxury E-Commerce Styles
-   Couleurs : Turquoise & Rose
-   ============================================ */
+/* =======================================================
+   BOUTIQUE COGI
+   Couleurs de Base et dominantes : Turquoise & Rose
+   ======================================================= */
 
 /* ---- Variables ---- */
 :root {
@@ -83,18 +83,6 @@ img {
     display: block;
 }
 
-/* ---- Scrollbar ---- 
-::-webkit-scrollbar {
-    width: 8px;
-}
-::-webkit-scrollbar-track {
-    background: var(--light-gray);
-}
-::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, var(--turquoise), var(--rose));
-    border-radius: 10px;
-}
-*/
 /* ==================== PERSONNALISATION SCROLLBAR ==================== */
 /* Chrome, Edge, and Safari */
 ::-webkit-scrollbar {

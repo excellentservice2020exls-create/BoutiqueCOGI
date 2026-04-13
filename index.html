@@ -1,52 +1,354 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Hero Carousel</title>
-  <link rel="stylesheet" href="styles.css"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Boutique COGI | Élégance & Style</title>
+    <meta name="description" content="Découvrez la Boutique COGI. Achat et livraison à domicile de vêtements et accessoires pour femme, homme et enfant.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body>
 
-<section class="hero-carousel" aria-label="Hero Carousel">
-  <div class="carousel-track">
+<body class="sidebar-collapsed">
 
-    <!-- Vidéo 1 -->
-    <div class="slide">
-      <video muted preload="metadata" playsinline>
-        <source src="media/video1.mp4" type="video/mp4" />
-      </video>
+    <nav class="navbar" id="navbar">
+        <div class="navbar-left">
+            <div class="logo-container" id="logo-animated" aria-label="Retour à l'accueil">
+                <div class="logo-icon"><i class="fas fa-gem"></i></div>
+                <span class="logo-text">Boutique <span class="logo-highlight">COGI</span></span>
+            </div>
+        </div>
+        <div class="navbar-right">
+            <div class="navbar-item">
+                <i class="fas fa-shopping-bag"></i> <span>Achat à Domicile</span>
+            </div>
+            <div class="navbar-item">
+                <i class="fas fa-truck"></i> <span>Livraison à Domicile</span>
+            </div>
+        </div>
+        <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Ouvrir le menu">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo">
+                <span class="logo-text-sidebar">Menu</span>
+            </div>
+            <button id="desktop-sidebar-toggle" class="desktop-sidebar-toggle" aria-label="Réduire le menu">
+                <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="11 17 6 12 11 7"></polyline>
+                    <polyline points="18 17 13 12 18 7"></polyline>
+                </svg>
+            </button>
+        </div>
+        <ul class="sidebar-menu">
+            <li class="sidebar-item">
+                <a href="#hero" class="sidebar-link active" data-section="hero" data-tooltip="ACCUEIL">
+                    <i class="fas fa-home"></i> <span>ACCUEIL</span>
+                </a>
+            </li>
+            <li class="sidebar-item has-submenu">
+                <a href="#boutique" class="sidebar-link" data-section="boutique" data-tooltip="BOUTIQUE">
+                    <i class="fas fa-store"></i> <span>BOUTIQUE</span>
+                    <i class="fas fa-chevron-down submenu-arrow"></i>
+                </a>
+                <ul class="sidebar-submenu">
+                    <li><a href="#catalogue-femme"><i class="fas fa-female"></i> Habit Femme</a></li>
+                    <li><a href="#catalogue-homme"><i class="fas fa-male"></i> Habit Homme</a></li>
+                    <li><a href="#catalogue-enfant"><i class="fas fa-child"></i> Habit Enfant</a></li>
+                    <li><a href="#catalogue-chaussure"><i class="fas fa-shoe-prints"></i> Chaussure Dame</a></li>
+                    <li><a href="#catalogue-sac"><i class="fas fa-shopping-bag"></i> Sac Dame</a></li>
+                    <li><a href="#catalogue-accessoire"><i class="fas fa-ring"></i> Accessoire</a></li>
+                </ul>
+            </li>
+            <li class="sidebar-item has-submenu">
+                <a href="#contact" class="sidebar-link" data-section="contact" data-tooltip="CONTACT">
+                    <i class="fas fa-envelope"></i> <span>CONTACT</span>
+                    <i class="fas fa-chevron-down submenu-arrow"></i>
+                </a>
+                <ul class="sidebar-submenu">
+                    <li><a href="#contact-email"><i class="fas fa-at"></i> E-mail</a></li>
+                    <li><a href="#contact-phone"><i class="fab fa-whatsapp"></i> Whatsapp</a></li>
+                </ul>
+            </li>
+            <li class="sidebar-item has-submenu">
+                <a href="#reseaux" class="sidebar-link" data-section="reseaux" data-tooltip="RÉSEAUX SOCIAUX">
+                    <i class="fas fa-share-alt"></i> <span>RÉSEAUX SOCIAUX</span>
+                    <i class="fas fa-chevron-down submenu-arrow"></i>
+                </a>
+                <ul class="sidebar-submenu">
+                    <li><a href="#" data-social="whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>
+                    <li><a href="#" data-social="facebook"><i class="fab fa-facebook"></i> Facebook</a></li>
+                    <li><a href="#" data-social="telegram"><i class="fab fa-telegram"></i> Telegram</a></li>
+                    <li><a href="#" data-social="tiktok"><i class="fab fa-tiktok"></i> TikTok</a></li>
+                    <li><a href="#" data-social="instagram"><i class="fab fa-instagram"></i> Instagram</a></li>
+                </ul>
+            </li>
+        </ul>
+        <div class="sidebar-footer">
+            <p>&copy; 2026 Boutique COGI</p>
+        </div>
+    </aside>
+
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <div class="main-wrapper" id="main-wrapper">
+
+        <section class="hero-section" id="hero">
+            <div class="hero-carousel" id="heroCarousel">
+                
+                <div class="hero-slide active" data-type="video">
+                    <video muted playsinline loop preload="metadata">
+                        <source src="Media-v-20260218/Vids20260212at0710PM.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="hero-slide" data-type="image" style="background-image:url('Media-p-20260218/pict01.jpeg')"></div>
+                <div class="hero-slide" data-type="image" style="background-image:url('Media-p-20260218/pict02.jpeg')"></div>
+                <div class="hero-slide" data-type="image" style="background-image:url('Media-p-20260218/pict03.jpeg')"></div>
+                <div class="hero-slide" data-type="image" style="background-image:url('Media-p-20260218/pict04.jpeg')"></div>
+                <div class="hero-slide" data-type="video">
+                    <video muted playsinline loop preload="metadata">
+                        <source src="Media-v-20260218/Vids20260212at0912PM.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="hero-slide" data-type="image" style="background-image:url('Media-p-20260218/pict10.jpeg')"></div>
+                <div class="hero-slide" data-type="image" style="background-image:url('Media-p-20260218/pict12.jpeg')"></div>
+                <div class="hero-slide" data-type="image" style="background-image:url('Media-p-20260218/pict13.jpeg')"></div>
+                <div class="hero-slide" data-type="image" style="background-image:url('Media-p-20260218/pict14.jpeg')"></div>
+
+                <button class="hero-arrow left" aria-label="Slide précédente"><i class="fas fa-chevron-left"></i></button>
+                <button class="hero-arrow right" aria-label="Slide suivante"><i class="fas fa-chevron-right"></i></button>
+                <div class="hero-dots"></div>
+            </div>
+            
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <span class="hero-tag">Bienvenue</span>
+                <h1 class="hero-title">Avec Style <span class="text-gradient">élégante...</span></h1>
+                <p class="hero-subtitle">Découvrez notre nouvelle collection, soigneusement sélectionnée pour vous.</p>
+            </div>
+        </section>
+
+        <main class="main-content">
+            <div class="marquee-banner">
+                <div class="marquee-track">
+                    <span>★★★★ LIVRAISON GRATUITE A PARTIR DE 100$ D'ACHAT ★★★★ ACHAT À DOMICILE ★★★★ LIVRAISON GRATUITE A PARTIR DE 100$ D'ACHAT ★★★★ ACHAT À DOMICILE ★★★★</span>
+                </div>
+            </div>
+
+            <section class="section-boutique" id="boutique">
+                <div class="section-header">
+                    <span class="section-tag">Notre Collection</span>
+                    <h2 class="section-title">BOUTIQUE</h2>
+                    <p class="section-desc">Explorez nos catégories pour vous offrir le meilleur de la mode.</p>
+                    <div class="title-underline"></div>
+                </div>
+
+                <div class="boutique-grid">
+                    <div class="boutique-card fade-in-up" onclick="document.getElementById('catalogue-femme').scrollIntoView()">
+                        <div class="card-image" style="background: linear-gradient(135deg, #ff6b9d 0%, #c44569 100%);">
+                            <div class="card-icon"><i class="fas fa-female"></i></div>
+                            <div class="card-overlay"><span class="card-tag">Femme</span></div>
+                        </div>
+                        <div class="card-body">
+                            <h3>Habit Femme</h3>
+                            <p>Robes élégantes, ensembles raffinés pour la femme moderne.</p>
+                            <span class="card-link">Découvrir <i class="fas fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                    
+                    <div class="boutique-card fade-in-up" onclick="document.getElementById('catalogue-homme').scrollIntoView()">
+                        <div class="card-image" style="background: linear-gradient(135deg, #2EC4B6 0%, #1a9e92 100%);">
+                            <div class="card-icon"><i class="fas fa-male"></i></div>
+                            <div class="card-overlay"><span class="card-tag">Homme</span></div>
+                        </div>
+                        <div class="card-body">
+                            <h3>Habit Homme</h3>
+                            <p>Costumes impeccables, chemises et looks décontractés.</p>
+                            <span class="card-link">Découvrir <i class="fas fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+
+                    <div class="boutique-card fade-in-up" onclick="document.getElementById('catalogue-enfant').scrollIntoView()">
+                        <div class="card-image" style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);">
+                            <div class="card-icon"><i class="fas fa-child"></i></div>
+                            <div class="card-overlay"><span class="card-tag">Enfant</span></div>
+                        </div>
+                        <div class="card-body">
+                            <h3>Habit Enfant</h3>
+                            <p>Mode adorable et confortable pour les petits.</p>
+                            <span class="card-link">Découvrir <i class="fas fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+
+                    <div class="boutique-card fade-in-up" onclick="document.getElementById('catalogue-chaussure').scrollIntoView()">
+                        <div class="card-image" style="background: linear-gradient(135deg, #40CFC0 0%, #2EC4B6 100%);">
+                            <div class="card-icon"><i class="fas fa-shoe-prints"></i></div>
+                            <div class="card-overlay"><span class="card-tag">Chaussures</span></div>
+                        </div>
+                        <div class="card-body">
+                            <h3>Chaussure Dame</h3>
+                            <p>Escarpins, sandales, et bottines pour chaque tenue.</p>
+                            <span class="card-link">Découvrir <i class="fas fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+
+                    <div class="boutique-card fade-in-up" onclick="document.getElementById('catalogue-sac').scrollIntoView()">
+                        <div class="card-image" style="background: linear-gradient(135deg, #E8487F 0%, #ff6b9d 100%);">
+                            <div class="card-icon"><i class="fas fa-shopping-bag"></i></div>
+                            <div class="card-overlay"><span class="card-tag">Sacs</span></div>
+                        </div>
+                        <div class="card-body">
+                            <h3>Sac Dame</h3>
+                            <p>Sacs à main, pochettes et cabas de luxe.</p>
+                            <span class="card-link">Découvrir <i class="fas fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+
+                    <div class="boutique-card fade-in-up" onclick="document.getElementById('catalogue-accessoire').scrollIntoView()">
+                        <div class="card-image" style="background: linear-gradient(135deg, #2EC4B6 0%, #ff6b9d 100%);">
+                            <div class="card-icon"><i class="fas fa-ring"></i></div>
+                            <div class="card-overlay"><span class="card-tag">Accessoires</span></div>
+                        </div>
+                        <div class="card-body">
+                            <h3>Accessoire</h3>
+                            <p>Bijoux, montres, lunettes et autres pour sublimer votre style.</p>
+                            <span class="card-link">Découvrir <i class="fas fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-catalogue" id="catalogue-femme">
+                <div class="section-header">
+                    <span class="section-tag">Nouveautés</span><h2 class="section-title">HABIT FEMME</h2><div class="title-underline"></div>
+                </div>
+                <div class="product-grid" id="grid-habit-femme"></div>
+            </section>
+
+            <section class="section-catalogue" id="catalogue-homme">
+                <div class="section-header">
+                    <span class="section-tag">Nouveautés</span><h2 class="section-title">HABIT HOMME</h2><div class="title-underline"></div>
+                </div>
+                <div class="product-grid" id="grid-habit-homme"></div>
+            </section>
+
+            <section class="section-catalogue" id="catalogue-enfant">
+                <div class="section-header">
+                    <span class="section-tag">Nouveautés</span><h2 class="section-title">HABIT ENFANT</h2><div class="title-underline"></div>
+                </div>
+                <div class="product-grid" id="grid-habit-enfant"></div>
+            </section>
+            
+            <section class="section-catalogue" id="catalogue-chaussure">
+                <div class="section-header">
+                    <span class="section-tag">Nouveautés</span><h2 class="section-title">CHAUSSURE DAME</h2><div class="title-underline"></div>
+                </div>
+                <div class="product-grid" id="grid-habit-chaussure"></div>
+            </section>
+
+            <section class="section-catalogue" id="catalogue-sac">
+                <div class="section-header">
+                    <span class="section-tag">Nouveautés</span><h2 class="section-title">SAC DAME</h2><div class="title-underline"></div>
+                </div>
+                <div class="product-grid" id="grid-habit-sac"></div>
+            </section>
+
+            <section class="section-catalogue" id="catalogue-accessoire">
+                <div class="section-header">
+                    <span class="section-tag">Nouveautés</span><h2 class="section-title">ACCESSOIRE</h2><div class="title-underline"></div>
+                </div>
+                <div class="product-grid" id="grid-habit-accessoire"></div>
+            </section>
+
+            <section class="promo-banner">
+                <div class="promo-content fade-in-up">
+                    <span class="promo-tag">Service</span>
+                    <h2>Achat & Livraison à Domicile</h2>
+                    <p>Profitez de notre service personnalisé. Nous vous présentons une partie de nos articles. La livraison se fait directement au lieu de votre choix.</p>
+                    <div class="promo-features">
+                        <div class="promo-feature"><i class="fas fa-home"></i><span>Achat à Domicile</span></div>
+                        <div class="promo-feature"><i class="fas fa-truck"></i><span>Livraison Rapide</span></div>
+                        <div class="promo-feature"><i class="fas fa-star"></i><span>Qualité Premium</span></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-contact" id="contact">
+                <div class="section-header">
+                    <span class="section-tag">Nous Joindre</span>
+                    <h2 class="section-title">CONTACT</h2>
+                    <div class="title-underline"></div>
+                </div>
+                <div class="contact-grid">
+                    <div class="contact-card fade-in-up" id="contact-phone">
+                        <div class="contact-icon turquoise"><i class="fab fa-whatsapp"></i></div>
+                        <h3>Whatsapp</h3>
+                        <p>Contactez-nous directement</p>
+                        <a href="#" data-social="whatsapp" class="contact-link">Discuter sur WhatsApp</a>
+                    </div>
+                    <div class="contact-card fade-in-up" id="contact-email">
+                        <div class="contact-icon rose"><i class="fas fa-envelope"></i></div>
+                        <h3>E-mail</h3>
+                        <p>Envoyez-nous un message</p>
+                        <a href="mailto:contact@boutiquecogi.com" class="contact-link">contact@boutiquecogi.com</a>
+                    </div>                   
+                </div>
+            </section>
+
+            <section class="section-reseaux" id="reseaux">
+                <div class="section-header">
+                    <span class="section-tag">Suivez-nous</span>
+                    <h2 class="section-title">RÉSEAUX SOCIAUX</h2>
+                    <div class="title-underline"></div>
+                </div>
+                <div class="social-grid">
+                    <a href="#" data-social="whatsapp" class="social-card whatsapp fade-in-up"><div class="social-icon"><i class="fab fa-whatsapp"></i></div><h3>WhatsApp</h3></a>
+                    <a href="#" data-social="facebook" class="social-card facebook fade-in-up"><div class="social-icon"><i class="fab fa-facebook-f"></i></div><h3>Facebook</h3></a>
+                    <a href="#" data-social="telegram" class="social-card telegram fade-in-up"><div class="social-icon"><i class="fab fa-telegram-plane"></i></div><h3>Telegram</h3></a>
+                    <a href="#" data-social="tiktok" class="social-card tiktok fade-in-up"><div class="social-icon"><i class="fab fa-tiktok"></i></div><h3>TikTok</h3></a>
+                    <a href="#" data-social="instagram" class="social-card instagram fade-in-up"><div class="social-icon"><i class="fab fa-instagram"></i></div><h3>Instagram</h3></a>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer" id="footer">
+            <div class="footer-top">
+                <div class="footer-col footer-brand">
+                    <div class="footer-logo"><i class="fas fa-gem"></i><span>Boutique <strong>COGI</strong></span></div>
+                    <p>Boutique en ligne pour visionner les articles et se faire livrer chez soi.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>BOUTIQUE</h4>
+                    <ul>
+                        <li><a href="#catalogue-femme">Habit Femme</a></li>
+                        <li><a href="#catalogue-homme">Habit Homme</a></li>
+                        <li><a href="#catalogue-enfant">Habit Enfant</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>CONTACT</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> contact@boutiquecogi.com</li>
+                        <li><i class="fab fa-whatsapp"></i> +243 819...</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Kinshasa, R.D.C</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Boutique COGI — Tous droits réservés.</p>
+            </div>
+        </footer>
     </div>
 
-    <!-- Images -->
-    <div class="slide"><img src="media/img1.jpg" loading="lazy" /></div>
-    <div class="slide"><img src="media/img2.jpg" loading="lazy" /></div>
-    <div class="slide"><img src="media/img3.jpg" loading="lazy" /></div>
-    <div class="slide"><img src="media/img4.jpg" loading="lazy" /></div>
-    <div class="slide"><img src="media/img5.jpg" loading="lazy" /></div>
-    <div class="slide"><img src="media/img6.jpg" loading="lazy" /></div>
-    <div class="slide"><img src="media/img7.jpg" loading="lazy" /></div>
-
-    <!-- Vidéo 2 -->
-    <div class="slide">
-      <video muted preload="metadata" playsinline>
-        <source src="media/video2.mp4" type="video/mp4" />
-      </video>
-    </div>
-
-    <!-- Image finale -->
-    <div class="slide"><img src="media/img8.jpg" loading="lazy" /></div>
-
-  </div>
-
-  <!-- Navigation -->
-  <button class="nav prev" aria-label="Previous slide">❮</button>
-  <button class="nav next" aria-label="Next slide">❯</button>
-
-  <!-- Dots -->
-  <div class="dots"></div>
-</section>
-
-<script src="script.js" defer></script>
+    <script defer src="script.js"></script>
 </body>
 </html>

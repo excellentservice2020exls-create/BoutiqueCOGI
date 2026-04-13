@@ -1,14 +1,17 @@
 Boutique COGI...<!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" >
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Boutique COGI</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Lato:wght@300;400;700;900&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
+
 <body class="sidebar-collapsed">
 
     <!-- ===================== NAVBAR ===================== -->
@@ -116,27 +119,71 @@ Boutique COGI...<!DOCTYPE html>
     <div class="main-wrapper" id="main-wrapper">
 
         <!-- ========== HERO SECTION ========== -->
-        <!--
-            <section class="hero" id="hero">
-                <div class="hero-image">
-                    <div class="hero-gradient-overlay"></div>
-                    <div class="hero-content">
-                        <span class="hero-tag">Bienvenu(e)</span>
-                        <h1 class="hero-title">Avec Style<br><span>élégante...</span></h1>
-                        <p class="hero-subtitle">Découvrez notre sélection de gammes diversifiées de mode et d'accessoires</p>
-                        <a href="#boutique" class="hero-btn">Explorer la Boutique <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            </section>
-        -->
+
         <section class="hero-section" id="home">
-            <div class="hero-video-container">
-                <video playsinline autoplay muted loop class="hero-video active" id="vid1">
-                    <source src="Media-v-20260218/Vids20260212at0710PM.mp4" type="video/mp4">
-                </video>
-                <video playsinline autoplay muted loop class="hero-video" id="vid2">
-                    <source src="Media-v-20260218/Vids20260212at0912PM.mp4" type="video/mp4">
-                </video>
+            <div class="hero-carousel" id="heroCarousel">
+
+                <div class="hero-slide" data-type="video">
+                    <video muted playsinline>
+                        <source src="Media-v-20260218/Vids20260212at0710PM.mp4" type="video/mp4">
+                    </video>
+                </div>
+
+                <div class="hero-slide" data-type="image"
+                    style="background-image:url('Media-p-20260218/pict01.jpeg')">
+                </div>
+
+                <div class="hero-slide" data-type="image"
+                    style="background-image:url('Media-p-20260218/pict02.jpeg')">
+                </div>
+                
+                <div class="hero-slide" data-type="image"
+                    style="background-image:url('Media-p-20260218/pict03.jpeg')">
+                </div>
+
+                <div class="hero-slide" data-type="image"
+                    style="background-image:url('Media-p-20260218/pict04.jpeg')">
+                </div>
+
+                <div class="hero-slide" data-type="video">
+                    <video muted playsinline>
+                        <source src="Media-v-20260218/Vids20260212at0912PM.mp4" type="video/mp4">
+                    </video>
+                </div>
+
+                <div class="hero-slide" data-type="image"
+                    style="background-image:url('Media-p-20260218/pict10.jpeg')">
+                </div>
+
+                <div class="hero-slide" data-type="image"
+                    style="background-image:url('Media-p-20260218/pict12.jpeg')">
+                </div>
+
+                <div class="hero-slide" data-type="image"
+                    style="background-image:url('Media-p-20260218/pict13.jpeg')">
+                </div>
+
+                <div class="hero-slide" data-type="image"
+                    style="background-image:url('Media-p-20260218/pict14.jpeg')">
+                </div>
+
+                <!-- Flèches -->
+                <button class="hero-arrow left" aria-label="Précédent">&#10094;</button>
+                <button class="hero-arrow right" aria-label="Suivant">&#10095;</button>
+
+                <!-- Dots -->
+                <div class="hero-dots">
+                    <span class="hero-dot active"></span>
+                    <span class="hero-dot"></span>
+                    <span class="hero-dot"></span>
+                    <span class="hero-dot"></span>
+                    <span class="hero-dot"></span>
+                    <span class="hero-dot"></span>
+                    <span class="hero-dot"></span>
+                    <span class="hero-dot"></span>
+                    <span class="hero-dot"></span>
+                    <span class="hero-dot"></span>
+                </div>
             </div>
             <div class="hero-overlay"></div>
            
@@ -460,18 +507,6 @@ Boutique COGI...<!DOCTYPE html>
                         <li><i class="fas fa-map-marker-alt"></i> Kinshasa, R.D.C </li>
                     </ul>
                 </div>
-                <!--
-                    <div class="footer-col">
-                    <h4>RÉSEAUX SOCIAUX</h4>                                  
-                    <ul class="social-links">
-                        <li><a href="#" data-social="whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>
-                        <li><a href="#" data-social="facebook"><i class="fab fa-facebook-f"></i> Facebook</a></li>
-                        <li><a href="#" data-social="telegram"><i class="fab fa-telegram-plane"></i> Telegram</a></li>
-                        <li><a href="#" data-social="tiktok"><i class="fab fa-tiktok"></i> TikTok</a></li>
-                        <li><a href="#" data-social="instagram"><i class="fab fa-instagram"></i> Instagram</a></li>
-                    </ul>
-                </div> 
-                -->
                 
                 <div class="footer-col">
                     <h4>ASSISTANCE</h4>

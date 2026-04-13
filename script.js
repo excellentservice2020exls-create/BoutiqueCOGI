@@ -294,14 +294,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    /* ============================================
-       11. AUTO-OPEN "BOUTIQUE" SUBMENU ON LOAD
-       ============================================ */
-    /* const boutiqueSubmenu = document.querySelector('.sidebar-item.has-submenu');
-    if (boutiqueSubmenu) {
-        boutiqueSubmenu.classList.add('open');
-    }
-    */
+   
 
 
     /* ============================================
@@ -363,30 +356,104 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
     /* ============================================
-   ALTERNANCE DES VIDÉOS HERO
-   ============================================ */
-function setupVideoSwitch() {
-    const v1 = document.getElementById('vid1');
-    const v2 = document.getElementById('vid2');
-    
-    // On définit l'intervalle (ex: 27000ms = 27 secondes)
-    setInterval(() => {
-        if (v1.classList.contains('active')) {
-            v1.classList.remove('active');
-            v2.classList.add('active');
-            v2.play(); // On s'assure qu'elle joue
-        } else {
-            v2.classList.remove('active');
-            v1.classList.add('active');
-            v1.play();
-        }
-    }, 27000); 
-}
+        14. GESTIONDE LA PARTIE HERO
+        ============================================ */
+document.addEventListener("DOMContentLoaded", () => {
 
-// Lancer la fonction une fois que le document est prêt
-document.addEventListener('DOMContentLoaded', () => {
-    setupVideoSwitch();
+    const carousel = document.getElementById("heroCarousel");
+    const slides = [...carousel.querySelectorAll(".hero-slide")];
+    const dotsContainer = carousel.querySelector(".hero-dots");
+    const nextBtn = carousel.querySelector(".hero-arrow.right");
+    const prevBtn = carousel.querySelector(".hero-arrow.left");
+
+    let index = 0;
+    let interval;
+    const AUTO_DELAY = 20000;
+
+    /* ---------- Dots ---------- */
+    slides.forEach((_, i) => {
+        const dot = document.createElement("div");
+        dot.className = "hero-dot" + (i === 0 ? " active" : "");
+        dot.addEventListener("click", () => goToSlide(i));
+        dotsContainer.appendChild(dot);
+    });
+
+    const dots = [...dotsContainer.children];
+
+    /* ---------- Core ---------- */
+    function goToSlide(i) {
+        slides[index].classList.remove("active");
+        dots[index].classList.remove("active");
+
+        stopVideo(slides[index]);
+
+        index = i;
+
+        slides[index].classList.add("active");
+        dots[index].classList.add("active");
+
+        playVideo(slides[index]);
+    }
+
+    function next() {
+        goToSlide((index + 1) % slides.length);
+    }
+
+    function prev() {
+        goToSlide((index - 1 + slides.length) % slides.length);
+    }
+
+    function playVideo(slide) {
+        if (slide.dataset.type === "video") {
+            const video = slide.querySelector("video");
+            video.currentTime = 0;
+            video.play();
+        }
+    }
+
+    function stopVideo(slide) {
+        const video = slide.querySelector("video");
+        if (video) {
+            video.pause();
+        }
+    }
+
+    /* ---------- Auto ---------- */
+    function startAuto() {
+        interval = setInterval(next, AUTO_DELAY);
+    }
+
+    function stopAuto() {
+        clearInterval(interval);
+    }
+
+    startAuto();
+    playVideo(slides[0]);
+
+    /* ---------- Events ---------- */
+    nextBtn.onclick = () => { stopAuto(); next(); startAuto(); };
+    prevBtn.onclick = () => { stopAuto(); prev(); startAuto(); };
+
+    carousel.addEventListener("mouseenter", stopAuto);
+    carousel.addEventListener("mouseleave", startAuto);
+
+    /* ---------- Swipe Mobile ---------- */
+    let startX = 0;
+
+    carousel.addEventListener("touchstart", e => {
+        startX = e.touches[0].clientX;
+    });
+
+    carousel.addEventListener("touchend", e => {
+        const diff = startX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 50) {
+            stopAuto();
+            diff > 0 ? next() : prev();
+            startAuto();
+        }
+    });
 });
+
 /* ============================================
        14. GESTION DU CATALOGUE (Méthode Array)
        ============================================ */

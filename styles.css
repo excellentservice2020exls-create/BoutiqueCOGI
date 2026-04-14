@@ -237,7 +237,7 @@ img {
 }
 
 .navbar-item:hover {
-    color: var(--dark);
+    color: var(--rose);
     transform: translateY(-1px);
 }
 

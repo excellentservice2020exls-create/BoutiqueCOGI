@@ -213,7 +213,7 @@ img {
     gap: 8px;
     font-size: 0.9rem;
     font-weight: 600;
-    color: var(--text-secondary);
+    color: var(--turquoise);
     padding: 8px 18px;
     border-radius: var(--radius-xl);
     cursor: pointer;

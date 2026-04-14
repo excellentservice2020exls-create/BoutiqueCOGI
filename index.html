@@ -102,41 +102,44 @@
 
     <div class="main-wrapper" id="main-wrapper">
 
-        <section class="hero-section" id="hero">
-            <div class="hero-carousel" id="heroCarousel">
-                
-                <div class="hero-slide active" data-type="video">
-                    <video muted playsinline loop preload="metadata">
-                        <source src="Media-v-20260218/Vids20260212at0710PM.mp4" type="video/mp4">
-                    </video>
-                </div>
-                <div class="hero-slide" data-type="image" style="background-image:url('Media-p-20260218/pict01.jpeg')"></div>
-                <div class="hero-slide" data-type="image" style="background-image:url('Media-p-20260218/pict02.jpeg')"></div>
-                <div class="hero-slide" data-type="image" style="background-image:url('Media-p-20260218/pict03.jpeg')"></div>
-                <div class="hero-slide" data-type="image" style="background-image:url('Media-p-20260218/pict04.jpeg')"></div>
-                <div class="hero-slide" data-type="video">
-                    <video muted playsinline loop preload="metadata">
-                        <source src="Media-v-20260218/Vids20260212at0912PM.mp4" type="video/mp4">
-                    </video>
-                </div>
-                <div class="hero-slide" data-type="image" style="background-image:url('Media-p-20260218/pict10.jpeg')"></div>
-                <div class="hero-slide" data-type="image" style="background-image:url('Media-p-20260218/pict12.jpeg')"></div>
-                <div class="hero-slide" data-type="image" style="background-image:url('Media-p-20260218/pict13.jpeg')"></div>
-                <div class="hero-slide" data-type="image" style="background-image:url('Media-p-20260218/pict14.jpeg')"></div>
+        <section class="hero-carousel" aria-label="Hero Carousel">
+  <div class="carousel-track">
 
-                <button class="hero-arrow left" aria-label="Slide précédente"><i class="fas fa-chevron-left"></i></button>
-                <button class="hero-arrow right" aria-label="Slide suivante"><i class="fas fa-chevron-right"></i></button>
-                <div class="hero-dots"></div>
-            </div>
-            
-            <div class="hero-overlay"></div>
-            <div class="hero-content">
-                <span class="hero-tag">Bienvenue</span>
-                <h1 class="hero-title">Avec Style <span class="text-gradient">élégante...</span></h1>
-                <p class="hero-subtitle">Découvrez notre nouvelle collection, soigneusement sélectionnée pour vous.</p>
-            </div>
-        </section>
+    <!-- Vidéo 1 -->
+    <div class="slide">
+      <video muted preload="metadata" playsinline>
+        <source src="media/video1.mp4" type="video/mp4" />
+      </video>
+    </div>
 
+    <!-- Images -->
+    <div class="slide"><img src="media/img1.jpg" loading="lazy" /></div>
+    <div class="slide"><img src="media/img2.jpg" loading="lazy" /></div>
+    <div class="slide"><img src="media/img3.jpg" loading="lazy" /></div>
+    <div class="slide"><img src="media/img4.jpg" loading="lazy" /></div>
+    <div class="slide"><img src="media/img5.jpg" loading="lazy" /></div>
+    <div class="slide"><img src="media/img6.jpg" loading="lazy" /></div>
+    <div class="slide"><img src="media/img7.jpg" loading="lazy" /></div>
+
+    <!-- Vidéo 2 -->
+    <div class="slide">
+      <video muted preload="metadata" playsinline>
+        <source src="media/video2.mp4" type="video/mp4" />
+      </video>
+    </div>
+
+    <!-- Image finale -->
+    <div class="slide"><img src="media/img8.jpg" loading="lazy" /></div>
+
+  </div>
+
+  <!-- Navigation -->
+  <button class="nav prev" aria-label="Previous slide">❮</button>
+  <button class="nav next" aria-label="Next slide">❯</button>
+
+  <!-- Dots -->
+  <div class="dots"></div>
+</section>
         <main class="main-content">
             <div class="marquee-banner">
                 <div class="marquee-track">

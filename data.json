@@ -1,0 +1,253 @@
+
+{
+  "reseauxSociaux": {
+    "whatsapp": "KzI0MzgxOTUzODMyNQ==",
+    "facebook": "bW9uLnByb2ZpbC5mYWNlYm9vaw==",
+    "telegram": "bW9uX3VzZXJuYW1lX3RlbGVncmFt",
+    "tiktok": "QG1vbl9jb21wdGVfdGlrdG9r",
+    "instagram": "bW9uX2luc3RhX29mZmljaWVs"
+  },
+  "catalogue": {
+    "habitFemme": [
+      {
+        "id": "f1",
+        "nom": "Robe Lumineux à motif floral brillant",
+        "prix": "95$",
+        "taille": "42 à 48",
+        "couleur": "Jaune-Vert vif",
+        "image": "Media-p-20260218/pict09.jpeg"
+      },
+      {
+        "id": "f2",
+        "nom": "Robe Elégante Espoll",
+        "prix": "95$",
+        "taille": "42 à 48",
+        "couleur": "Noir avec paillette",
+        "image": "Media-p-20260218/pict14.jpeg"
+      },
+      {
+        "id": "f3",
+        "nom": "Robe Elégante à motif floral foncé",
+        "prix": "95$",
+        "taille": "42 à 48",
+        "couleur": "Brun-Marron",
+        "image": "Media-p-20260218/pict12.jpeg"
+      },
+      {
+        "id": "f4",
+        "nom": "Robe Elégante Espoll ",
+        "prix": "95$",
+        "taille": "42 à 48",
+        "couleur": "Rouge avec paillette",
+        "image": "Media-p-20260218/pict15.jpeg"
+      },
+      {
+        "id": "f5",
+        "nom": "Robe Plissée Zera à Ceinture Rouge",
+        "prix": "65$",
+        "taille": "44 à 50",
+        "couleur": "Rouge sang",
+        "image": "Media-p-20260308/FEMME/WhatsApp Image 2026-03-08 at 11.02.31 PM (1).jpeg"
+      },
+      {
+        "id": "f6",
+        "nom": "Complet pantalon et gilet lovelf Bras Cassé Bleu  ",
+        "prix": "75$",
+        "taille": "36 à 42",
+        "couleur": "Bleu",
+        "image": "Media-p-20260308/FEMME/WhatsApp Image 2026-03-08 at 11.02.31 PM (2).jpeg"
+      },
+      {
+        "id": "f7",
+        "nom": "Robe Plissée Zera à Ceinture Noire",
+        "prix": "65$",
+        "taille": "44 à 50",
+        "couleur": "Noir - Blanc",
+        "image": "Media-p-20260308/FEMME/WhatsApp Image 2026-03-08 at 11.02.31 PM.jpeg"
+      },
+      {
+        "id": "f8",
+        "nom": "Blouse blanche Unique avec boutons décoratifs ",
+        "prix": "35$",
+        "taille": "36 à 50",
+        "couleur": "Blanc",
+        "image": "Media-p-20260308/FEMME/WhatsApp Image 2026-03-08 at 11.02.32 PM (1).jpeg"
+      },
+      {
+        "id": "f9",
+        "nom": "Blouse Rouge Unique",
+        "prix": "95$",
+        "taille": "36 à 50",
+        "couleur": "Rouge",
+        "image": "Media-p-20260308/FEMME/WhatsApp Image 2026-03-08 at 11.02.32 PM (2).jpeg"
+      },
+      {
+        "id": "f10",
+        "nom": "Complet pantalon gilet lovelf bras cassé",
+        "prix": "75$",
+        "taille": "36 à 42",
+        "couleur": "Vert clair",
+        "image": "Media-p-20260308/FEMME/WhatsApp Image 2026-03-08 at 11.02.32 PM.jpeg"
+      },
+      {
+        "id": "f11",
+        "nom": "Robe foulard Soft à Ceinture Orange",
+        "prix": "75$",
+        "taille": "42 à 48",
+        "couleur": "Bleue fleurie",
+        "image": "Media-p-20260308/FEMME/WhatsApp Image 2026-03-08 at 11.02.33 PM (1).jpeg"
+      },
+      {
+        "id": "f12",
+        "nom": "Pantalon Jeans Zara ",
+        "prix": "40$",
+        "taille": "42 à 52",
+        "couleur": "Bleue ciel - Bleu foncé",
+        "image": "Media-p-20260308/FEMME/WhatsApp Image 2026-03-08 at 11.02.33 PM.jpeg"
+      },
+      {
+        "id": "f13",
+        "nom": "Robe dentelle Davina ",
+        "prix": "65$",
+        "taille": "36 à 42",
+        "couleur": "Bleue turquoise",
+        "image": "Media-p-20260308/FEMME/WhatsApp Image 2026-03-08 at 11.02.34 PM (1).jpeg"
+      },
+      {
+        "id": "f14",
+        "nom": "Robe droite Marchesa grande taille",
+        "prix": "60$",
+        "taille": "50 à 56",
+        "couleur": "Rouge bordeau",
+        "image": "Media-p-20260308/FEMME/WhatsApp Image 2026-03-08 at 11.02.34 PM (2).jpeg"
+      },
+      {
+        "id": "f15",
+        "nom": "Robe foulard Soft fleurie",
+        "prix": "65$",
+        "taille": "42 à 48",
+        "couleur": "Jaune",
+        "image": "Media-p-20260308/FEMME/WhatsApp Image 2026-03-08 at 11.02.34 PM.jpeg"
+      },
+      {
+        "id": "f16",
+        "nom": "Complet pantalon + Blousette + Veste pour Enfant",
+        "prix": "45$",
+        "taille": "8 à 15 ans",
+        "couleur": "Orange avec raillure",
+        "image": "Media-p-20260308/FEMME/WhatsApp Image 2026-03-08 at 11.03.26 PM.jpeg"
+      },
+      {
+        "id": "f17",
+        "nom": "Robe chic avec ceinture ",
+        "prix": "75$",
+        "taille": "42 à 48",
+        "couleur": "Noir - Mauve - Vert",
+        "image": "Media-p-20260308/FEMME/WhatsApp Image 2026-03-08 at 11.05.11 PM (1).jpeg"
+      },
+      {
+        "id": "f18",
+        "nom": "Tailleur dame jupe et veste Melorin",
+        "prix": "85$",
+        "taille": "42 à 48",
+        "couleur": "Bleu de nuit",
+        "image": "Media-p-20260308/FEMME/WhatsApp Image 2026-03-08 at 11.05.11 PM.jpeg"
+      }
+    ],
+    "habitHomme": [],
+    "habitEnfant": [
+      {
+        "id": "e1",
+        "nom": "Robe Enfant Rose (Rouge, Bleu)",
+        "prix": "30$",
+        "taille": "3 à 6 ans",
+        "couleur": "Rose",
+        "image": "Media-p-20260308/ENFANT/WhatsApp Image 2026-03-08 at 11.03.24 PM.jpeg"
+      },
+      {
+        "id": "e2",
+        "nom": "Complet vest Enfant Rouge",
+        "prix": "45$",
+        "taille": "7, 9 et 10 ans",
+        "couleur": "Rouge",
+        "image": "Media-p-20260308/ENFANT/WhatsApp Image 2026-03-08 at 11.03.25 PM.jpeg"
+      },
+      {
+        "id": "e3",
+        "nom": "Chemise Enfant Garçon (Blanc)",
+        "prix": "30$",
+        "taille": "2 à 10 ans",
+        "couleur": "Blanc",
+        "image": "Media-p-20260308/ENFANT/WhatsApp Image 2026-03-08 at 11.03.24 PM (2).jpeg"
+      },
+      {
+        "id": "e4",
+        "nom": "Blousette Pantalon Enfant Rose",
+        "prix": "35$",
+        "taille": "2, 5, 6 et 7 ans",
+        "couleur": "Rose-pink",
+        "image": "Media-p-20260308/ENFANT/WhatsApp Image 2026-03-08 at 11.03.26 PM.jpeg"
+      },
+      {
+        "id": "e5",
+        "nom": "Robe Enfant Manche longue",
+        "prix": "30$",
+        "taille": "4 à 7 ans",
+        "couleur": "Brun-Marron",
+        "image": "Media-p-20260308/ENFANT/WhatsApp Image 2026-03-08 at 11.03.27 PM.jpeg"
+      },
+      {
+        "id": "e6",
+        "nom": "Chemise Enfant Garçon (Brun)",
+        "prix": "30$",
+        "taille": "2 à 10 ans",
+        "couleur": "Brun-Marron",
+        "image": "Media-p-20260308/ENFANT/WhatsApp Image 2026-03-08 at 11.03.23 PM.jpeg"
+      },
+      {
+        "id": "e7",
+        "nom": "Robe 2Temps pour Enfant",
+        "prix": "30$",
+        "taille": "2 à 5 ans",
+        "couleur": "Rouge-Blanc",
+        "image": "Media-p-20260308/ENFANT/WhatsApp Image 2026-03-08 at 11.03.28 PM.jpeg"
+      },
+      {
+        "id": "e8",
+        "nom": "Chemise Enfant Garçon (Gris)",
+        "prix": "30$",
+        "taille": "2 à 10 ans",
+        "couleur": "Gris",
+        "image": "Media-p-20260308/ENFANT/WhatsApp Image 2026-03-08 at 11.03.24 PM (3).jpeg"
+      }
+    ],
+    "chaussureDame": [],
+    "sacDame": [],
+    "accessoire": [
+      {
+        "id": "a1",
+        "nom": "Chaussettes Homme Bleu Nuit",
+        "prix": "5$",
+        "taille": "40 - 44",
+        "couleur": "Noir",
+        "image": "Media-p-20260308/ACCESSOIRE/WhatsApp Image 2026-03-08 at 11.05.57 PM.jpeg"
+      },
+      {
+        "id": "a2",
+        "nom": "SINGLET Coton (Blanc - Noir - Gris)",
+        "prix": "5$",
+        "taille": "S, M, L, XL, 2XL",
+        "couleur": "Blanc",
+        "image": "Media-p-20260308/ACCESSOIRE/WhatsApp Image 2026-03-08 at 11.05.56 PM (1).jpeg"
+      },
+      {
+        "id": "a3",
+        "nom": "Chaussettes Coton Blanc",
+        "prix": "5$",
+        "taille": "40 - 44",
+        "couleur": "Gris",
+        "image": "Media-p-20260308/ACCESSOIRE/WhatsApp Image 2026-03-08 at 11.05.56 PM.jpeg"
+      }
+    ]
+  }
+}

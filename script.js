@@ -2,6 +2,27 @@
    BOUTIQUE COGI — JavaScript
    Interactions, animations & navigation
    ============================================ */
+
+// ===== UTILITAIRES (T2.1 - Throttle/Debounce) =====
+function throttle(func, delay) {
+    let lastCall = 0;
+    return function(...args) {
+        const now = Date.now();
+        if (now - lastCall >= delay) {
+            lastCall = now;
+            func(...args);
+        }
+    };
+}
+
+function debounce(func, delay) {
+    let timeout;
+    return function(...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func(...args), delay);
+    };
+}
+
 // 1. Déclaration GLOBALE de l'observateur pour le rendre accessible aux données injectées
 let fadeObserver;
 const observerOptions = {
@@ -139,19 +160,17 @@ document.addEventListener('DOMContentLoaded', () => {
     /* ============================================
        4. NAVBAR SCROLL EFFECT
        ============================================ */
-    let lastScroll = 0;
-    window.addEventListener('scroll', () => {
+    // Fonction throttled pour navbar scroll effect
+    const handleNavbarScroll = throttle(() => {
         const currentScroll = window.pageYOffset;
-
-        // Add/remove scrolled class
         if (currentScroll > 50) {
             navbar.classList.add('scrolled');
         } else {
             navbar.classList.remove('scrolled');
         }
-
-        lastScroll = currentScroll;
-    }, { passive: true });
+    }, 50); // Max 1 appel par 50ms
+    
+    window.addEventListener('scroll', handleNavbarScroll, { passive: true });
 
 
     /* ============================================
@@ -178,7 +197,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    window.addEventListener('scroll', updateActiveLink, { passive: true });
+    // Appliquer throttle au updateActiveLink (T2.1)
+    const throttledUpdateActiveLink = throttle(updateActiveLink, 100); // Max 1 appel par 100ms
+    window.addEventListener('scroll', throttledUpdateActiveLink, { passive: true });
 /* ============================================
        6. SCROLL REVEAL ANIMATIONS
        ============================================ */
@@ -253,9 +274,13 @@ document.addEventListener('DOMContentLoaded', () => {
        ============================================ */
     const heroContent = document.querySelector('.hero-content');
     if (heroContent) {
-        window.addEventListener('scroll', () => {
+        // Fonction throttled pour parallax (T2.1)
+        const handleHeroParallax = throttle(() => {
             const scrolled = window.pageYOffset;
-            const heroHeight = document.querySelector('.hero').offsetHeight;
+            const heroElement = document.querySelector('.hero');
+            if (!heroElement) return;
+            
+            const heroHeight = heroElement.offsetHeight;
 
             if (scrolled < heroHeight) {
                 const opacity = 1 - (scrolled / heroHeight);
@@ -263,7 +288,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 heroContent.style.opacity = Math.max(0, opacity);
                 heroContent.style.transform = `translateY(${translateY}px)`;
             }
-        }, { passive: true });
+        }, 50); // Max 1 appel par 50ms
+        
+        window.addEventListener('scroll', handleHeroParallax, { passive: true });
     }
 
 
@@ -428,24 +455,202 @@ startAuto();
 /* ============================================
    14. GESTION DES DONNÉES (FETCH JSON) ET RENDU
    ============================================ */
+
+// ===== CONFIG & CONSTANTES =====
+const DATA_CONFIG = {
+    JSON_URL: 'data.json',
+    MAX_RETRIES: 3,
+    RETRY_DELAY: 1000, // ms
+    CACHE_TTL: 24 * 60 * 60 * 1000, // 24h en ms
+    CACHE_KEY: 'boutique_cogi_data',
+    TIMEOUT: 5000 // 5 secondes
+};
+
 // Variable globale pour stocker les liens sociaux une fois chargés
 let socialDataConfig = {};
 
-// Fonction principale pour charger le fichier JSON
-async function chargerDonneesBoutique() {
+// ===== VALIDATION DE SCHÉMA (T1.2) =====
+function validateBoutiqueData(data) {
+    if (!data || typeof data !== 'object') {
+        throw new Error('Données invalides: structure non trouvée');
+    }
+    
+    // Vérifier reseauxSociaux
+    if (!data.reseauxSociaux || typeof data.reseauxSociaux !== 'object') {
+        throw new Error('Données invalides: reseauxSociaux manquant');
+    }
+    
+    // Vérifier catalogue
+    if (!data.catalogue || typeof data.catalogue !== 'object') {
+        throw new Error('Données invalides: catalogue manquant');
+    }
+    
+    const requiredCategories = ['habitFemme', 'habitHomme', 'habitEnfant', 'chaussureDame', 'sacDame', 'accessoire'];
+    for (const category of requiredCategories) {
+        if (!Array.isArray(data.catalogue[category])) {
+            throw new Error(`Données invalides: catalogue.${category} n'est pas un tableau`);
+        }
+    }
+    
+    return true;
+}
+
+// ===== GESTION CACHE LOCALSTORAGE (T2.2 Preview) =====
+function getCachedData() {
     try {
-        const reponse = await fetch('data.json');
+        const cached = localStorage.getItem(DATA_CONFIG.CACHE_KEY);
+        if (!cached) return null;
         
-        if (!reponse.ok) {
-            throw new Error(`Erreur de chargement: ${reponse.status}`);
+        const { data, timestamp } = JSON.parse(cached);
+        const age = Date.now() - timestamp;
+        
+        if (age > DATA_CONFIG.CACHE_TTL) {
+            localStorage.removeItem(DATA_CONFIG.CACHE_KEY);
+            return null;
         }
         
-        const data = await reponse.json();
+        console.log('✓ Données chargées depuis cache (age: ' + Math.floor(age / 1000) + 's)');
+        return data;
+    } catch (e) {
+        console.warn('⚠ Erreur cache:', e.message);
+        return null;
+    }
+}
+
+function setCachedData(data) {
+    try {
+        localStorage.setItem(DATA_CONFIG.CACHE_KEY, JSON.stringify({
+            data: data,
+            timestamp: Date.now()
+        }));
+    } catch (e) {
+        console.warn('⚠ Impossible de cacher les données:', e.message);
+    }
+}
+
+// ===== FETCH AVEC RETRY & TIMEOUT (T1.1) =====
+async function fetchWithRetry(url, retries = DATA_CONFIG.MAX_RETRIES) {
+    for (let attempt = 1; attempt <= retries; attempt++) {
+        try {
+            const controller = new AbortController();
+            const timeout = setTimeout(() => controller.abort(), DATA_CONFIG.TIMEOUT);
+            
+            const response = await fetch(url, { signal: controller.signal });
+            clearTimeout(timeout);
+            
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+            }
+            
+            return await response.json();
+        } catch (error) {
+            clearTimeout(timeout);
+            
+            if (attempt < retries) {
+                const delay = DATA_CONFIG.RETRY_DELAY * Math.pow(2, attempt - 1);
+                console.warn(`⚠ Tentative ${attempt}/${retries} échouée. Retry dans ${delay}ms...`, error.message);
+                await new Promise(resolve => setTimeout(resolve, delay));
+            } else {
+                throw error;
+            }
+        }
+    }
+}
+
+// ===== AFFICHAGE MESSAGE ERREUR (T1.1) =====
+function afficherErreurChargement(message) {
+    const conteneurs = [
+        'grid-habit-femme', 'grid-habit-homme', 'grid-habit-enfant',
+        'grid-habit-chaussure', 'grid-habit-sac', 'grid-habit-accessoire'
+    ];
+    
+    const html = `
+        <div style="
+            grid-column: 1 / -1;
+            padding: 40px 20px;
+            text-align: center;
+            background: rgba(232, 72, 127, 0.08);
+            border-radius: 12px;
+            border-left: 4px solid rgb(232, 72, 127);
+        ">
+            <div style="margin-bottom: 10px;">
+                <i class="fas fa-exclamation-circle" style="font-size: 24px; color: rgb(232, 72, 127);"></i>
+            </div>
+            <h3 style="color: var(--text-primary); margin-bottom: 8px;">Oops! Erreur de chargement</h3>
+            <p style="color: var(--text-secondary); margin-bottom: 12px;">${message}</p>
+            <button onclick="location.reload()" style="
+                padding: 8px 20px;
+                background: rgb(232, 72, 127);
+                color: white;
+                border: none;
+                border-radius: 6px;
+                cursor: pointer;
+                font-weight: 500;
+            ">Réessayer</button>
+        </div>
+    `;
+    
+    conteneurs.forEach(id => {
+        const conteneur = document.getElementById(id);
+        if (conteneur) {
+            conteneur.innerHTML = html;
+            conteneur.style.display = 'grid';
+        }
+    });
+}
+
+// ===== AFFICHAGE SKELETON LOADERS (T1.4) =====
+function afficherSkeletonLoaders() {
+    const skeleton = `
+        <div class="skeleton-card fade-in-up">
+            <div class="skeleton-image"></div>
+            <div class="skeleton-content">
+                <div class="skeleton-title"></div>
+                <div class="skeleton-line"></div>
+                <div class="skeleton-line short"></div>
+            </div>
+        </div>
+    `;
+    
+    const conteneurs = [
+        'grid-habit-femme', 'grid-habit-homme', 'grid-habit-enfant',
+        'grid-habit-chaussure', 'grid-habit-sac', 'grid-habit-accessoire'
+    ];
+    
+    conteneurs.forEach(id => {
+        const conteneur = document.getElementById(id);
+        if (conteneur) {
+            conteneur.innerHTML = skeleton.repeat(4);
+            conteneur.style.display = 'grid';
+        }
+    });
+}
+
+// ===== FONCTION PRINCIPALE (T1.1 - Améliorée) =====
+async function chargerDonneesBoutique() {
+    try {
+        // Afficher skeleton loaders pendant le chargement
+        afficherSkeletonLoaders();
+        
+        // Essayer charger depuis cache d'abord
+        let data = getCachedData();
+        
+        // Si pas en cache, fetch depuis serveur avec retry
+        if (!data) {
+            console.log('📡 Chargement données depuis serveur...');
+            data = await fetchWithRetry(DATA_CONFIG.JSON_URL);
+            
+            // Valider les données (T1.2)
+            validateBoutiqueData(data);
+            
+            // Cacher pour prochaine fois
+            setCachedData(data);
+        }
         
         // 1. Initialiser la configuration des réseaux sociaux
         socialDataConfig = data.reseauxSociaux;
         
-        // 2. Rendre les produits dans le DOM (Méthode Array map)
+        // 2. Rendre les produits dans le DOM
         afficherProduits(data.catalogue.habitFemme, 'grid-habit-femme');
         afficherProduits(data.catalogue.habitHomme, 'grid-habit-homme');
         afficherProduits(data.catalogue.habitEnfant, 'grid-habit-enfant');
@@ -453,12 +658,31 @@ async function chargerDonneesBoutique() {
         afficherProduits(data.catalogue.sacDame, 'grid-habit-sac');
         afficherProduits(data.catalogue.accessoire, 'grid-habit-accessoire');
         
+        console.log('✓ Données boutique chargées avec succès');
+        
     } catch (erreur) {
-        console.error("Impossible de charger les données de la boutique:", erreur);
-        // Optionnel : Afficher un message d'erreur dans l'UI pour les conteneurs de produits
+        console.error('❌ Impossible de charger les données:', erreur);
+        afficherErreurChargement(
+            erreur.message || 'Une erreur s\'est produite lors du chargement des produits. Veuillez réessayer.'
+        );
     }
 }
-// Moteur de rendu dynamique (inchangé, mais déplacé ici pour la clarté)
+// ===== PROTECTION XSS (T1.3) =====
+function sanitizeHTML(html) {
+    if (typeof DOMPurify !== 'undefined') {
+        return DOMPurify.sanitize(html);
+    }
+    console.warn('⚠ DOMPurify non chargé, retour HTML brut');
+    return html;
+}
+
+function sanitizeText(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
+// Moteur de rendu dynamique (Amélioré avec XSS protection - T1.3)
 function afficherProduits(produits, conteneurId) {
     const conteneur = document.getElementById(conteneurId);
     
@@ -470,32 +694,33 @@ function afficherProduits(produits, conteneurId) {
     const html = produits.map(produit => `
         <div class="product-card fade-in-up">
             <div class="product-image-container">
-                <img src="${produit.image}" alt="${produit.nom}" loading="lazy">
+                <img src="${sanitizeText(produit.image)}" alt="${sanitizeText(produit.nom)}" loading="lazy">
             </div>
             <div class="product-info">
-                <h3 class="product-title">${produit.nom}</h3>
+                <h3 class="product-title">${sanitizeText(produit.nom)}</h3>
                 
                 <div class="product-badges">
                     <span class="badge badge-size">
-                        <i class="fas fa-ruler-combined"></i> ${produit.taille}
+                        <i class="fas fa-ruler-combined"></i> ${sanitizeText(produit.taille)}
                     </span>
                     <span class="badge badge-color">
-                        <i class="fas fa-palette"></i> ${produit.couleur}
+                        <i class="fas fa-palette"></i> ${sanitizeText(produit.couleur)}
                     </span>
                 </div>
 
-                <p class="product-price">${produit.prix}</p>
+                <p class="product-price">${sanitizeText(produit.prix)}</p>
                 
                 <button class="btn-buy" 
                     data-social="whatsapp" 
-                    data-message="Bonjour Boutique COGI, je souhaite commander : Cet article : ${produit.nom} (Réf: ${produit.id}) - Taille : ${produit.taille} - Couleur : ${produit.couleur} - Prix : ${produit.prix}">
+                    data-message="Bonjour Boutique COGI, je souhaite commander : Cet article : ${sanitizeText(produit.nom)} (Réf: ${sanitizeText(produit.id)}) - Taille : ${sanitizeText(produit.taille)} - Couleur : ${sanitizeText(produit.couleur)} - Prix : ${sanitizeText(produit.prix)}">
                     <i class="fab fa-whatsapp"></i> Commander
                 </button>
             </div>
         </div>
     `).join('');
 
-    conteneur.innerHTML = html;
+    // Utiliser innerHTML avec sanitization
+    conteneur.innerHTML = sanitizeHTML(html);
     
     if (typeof fadeObserver !== 'undefined') {
         document.querySelectorAll(`#${conteneurId} .fade-in-up`).forEach(el => fadeObserver.observe(el));

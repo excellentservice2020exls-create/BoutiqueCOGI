@@ -1,6 +1,12 @@
 
 {
- 
+  "reseauxSociaux": {
+    "whatsapp": "KzI0MzgxOTUzODMyNQ==",
+    "facebook": "bW9uLnByb2ZpbC5mYWNlYm9vaw==",
+    "telegram": "bW9uX3VzZXJuYW1lX3RlbGVncmFt",
+    "tiktok": "QG1vbl9jb21wdGVfdGlrdG9r",
+    "instagram": "bW9uX2luc3RhX29mZmljaWVs"
+  },
   "catalogue": {
     "habitFemme": [
       {

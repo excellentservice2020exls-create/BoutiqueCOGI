@@ -1670,3 +1670,128 @@ img {
 .badge i {
     font-size: 0.75rem;
 }
+
+/* ============================================
+   SKELETON LOADERS (T1.4 - Loading UI)
+   ============================================ */
+@keyframes skeleton-shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+.skeleton-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.skeleton-image {
+    height: 280px;
+    background: linear-gradient(
+        90deg,
+        var(--light-gray) 25%,
+        #f0f0f0 50%,
+        var(--light-gray) 75%
+    );
+    background-size: 1000px 100%;
+    animation: skeleton-shimmer 2s infinite;
+}
+
+.skeleton-content {
+    padding: 20px;
+}
+
+.skeleton-title {
+    height: 18px;
+    background: linear-gradient(
+        90deg,
+        var(--light-gray) 25%,
+        #f0f0f0 50%,
+        var(--light-gray) 75%
+    );
+    background-size: 1000px 100%;
+    animation: skeleton-shimmer 2s infinite;
+    border-radius: 4px;
+    margin-bottom: 12px;
+}
+
+.skeleton-line {
+    height: 12px;
+    background: linear-gradient(
+        90deg,
+        var(--light-gray) 25%,
+        #f0f0f0 50%,
+        var(--light-gray) 75%
+    );
+    background-size: 1000px 100%;
+    animation: skeleton-shimmer 2s infinite;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.skeleton-line.short {
+    width: 60%;
+    margin-bottom: 0;
+}
+
+/* ============================================
+   ERROR STATE STYLES
+   ============================================ */
+.error-container {
+    display: grid;
+    place-items: center;
+    min-height: 300px;
+    padding: 40px 20px;
+}
+
+.error-message {
+    background: rgba(232, 72, 127, 0.08);
+    border-left: 4px solid rgb(232, 72, 127);
+    border-radius: 8px;
+    padding: 24px;
+    text-align: center;
+    max-width: 500px;
+}
+
+.error-icon {
+    font-size: 36px;
+    color: rgb(232, 72, 127);
+    margin-bottom: 12px;
+}
+
+.error-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.error-description {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.error-button {
+    padding: 10px 24px;
+    background: linear-gradient(135deg, var(--turquoise), var(--rose));
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: 0.9rem;
+}
+
+.error-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(232, 72, 127, 0.3);
+}

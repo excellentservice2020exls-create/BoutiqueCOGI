@@ -1,3 +1,4 @@
+// script.js
 /* ============================================
    BOUTIQUE COGI — JavaScript
    Interactions, animations & navigation

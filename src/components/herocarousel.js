@@ -1,3 +1,4 @@
+// src/components/herocarousel.js
 /**
  * Gère le carrousel en hero section (vidéos + images)
  * Utilisation :

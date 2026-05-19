@@ -1,3 +1,4 @@
+// src/components/productcard.js
 export function renderProductCard(product) {
   return 
     <div class="product-card fade-in-up">

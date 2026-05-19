@@ -1,3 +1,4 @@
+// src/components/social.js
 export function renderProductCard(socialBaseUrl) {
   return 
     <div class="product-card fade-in-up">

@@ -1,3 +1,4 @@
+// src/components/footer.js
 export function createFooter() {
   return 
   

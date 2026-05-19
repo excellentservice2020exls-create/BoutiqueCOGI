@@ -1,6 +1,6 @@
 {
   "catalogue": {
-    "habitFemme": [
+    "Femme": [
       {
         "id": "f1",
         "nom": "Robe Lumineuse motif floral",
@@ -26,7 +26,7 @@
         "image": "Media-p-20260218/pict02.jpeg"
       }
     ],
-    "habitHomme": [
+    "Homme": [
       {
         "id": "h1",
         "nom": "Costume Slim Fit Marine",
@@ -44,7 +44,7 @@
         "image": "Media-p-20260218/homme05.jpeg"
       }
     ],
-    "habitEnfant": [
+    "Enfant": [
       {
         "id": "e1",
         "nom": "Ensemble Petit Prince",
@@ -52,6 +52,42 @@
         "taille": "2 à 6 ans",
         "couleur": "Bleu Ciel",
         "image": "Media-p-20260308/ENFANT/enfant01.jpeg"
+      }
+    ],
+    "chaussure": [
+      {
+        "id": "c1",
+        "nom": "Montre Classique Or Rose",
+        "prix": "85$",
+        "taille": "Unique",
+        "couleur": "Pink Gold",
+        "image": "Media-p-20260218/acc01.jpeg"
+      },
+      {
+        "id": "c2",
+        "nom": "Sac à main Cuir Turquoise",
+        "prix": "110$",
+        "taille": "Moyen",
+        "couleur": "Turquoise Luxe",
+        "image": "Media-p-20260218/acc04.jpeg"
+      }
+    ],
+    "sac": [
+      {
+        "id": "s1",
+        "nom": "Montre Classique Or Rose",
+        "prix": "85$",
+        "taille": "Unique",
+        "couleur": "Pink Gold",
+        "image": "Media-p-20260218/acc01.jpeg"
+      },
+      {
+        "id": "s2",
+        "nom": "Sac à main Cuir Turquoise",
+        "prix": "110$",
+        "taille": "Moyen",
+        "couleur": "Turquoise Luxe",
+        "image": "Media-p-20260218/acc04.jpeg"
       }
     ],
     "accessoire": [

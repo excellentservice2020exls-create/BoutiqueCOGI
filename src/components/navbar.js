@@ -1,3 +1,4 @@
+// src/components/navbar.js
 import { throttle } from '../utils/helpers.js';
 
 /**

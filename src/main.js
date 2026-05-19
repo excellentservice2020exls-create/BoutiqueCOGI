@@ -1,17 +1,47 @@
+// scr/main.js
+// Importation des fonctions de rendu pour chaque page
+
 import { renderHome } from './pages/Home.js';
-import { initNavbar } from './components/Navbar.js';
-import { initHeroCarousel } from './components/HeroCarousel.js';
-import productsData from './data/products.json';
-import socialData from './data/social.json';
+import { renderCollection } from './pages/Collection.js';
+import { renderProductDetails } from './pages/ProductDetails.js';
+import { initNavbar } from './components/navbar.js';
+// Importer tes données simulées
+// import productsData from './data/products.json'; 
 
-document.addEventListener('DOMContentLoaded', () => {
-  const app = document.getElementById('app');
-  app.innerHTML = renderHome(productsData, socialData);
+const app = document.getElementById('app');
 
-  // Initialisations après le rendu du DOM
-  initNavbar();
-  initHeroCarousel('.hero-carousel');
+// Définition stricte des routes
+const routes = {
+    '/': renderHome,
+    '/collection': renderCollection,
+    '/product': renderProductDetails,
+};
 
-  // Scroll reveal déjà géré si tu utilises l’observer dans un module
-  // Tu peux l’initialiser ici
-});
+// Routeur performant basé sur l'API History
+const router = async () => {
+    // Nettoyage de l'URL pour gérer les paramètres (ex: /product?id=123)
+    const path = window.location.pathname;
+    const renderFunction = routes[path] || routes['/'];
+    
+    // Injection sécurisée avec DOMPurify si des données externes sont utilisées
+    app.innerHTML = renderFunction(); 
+    
+    // Réinitialisation du DOM (EventListeners) après chaque rendu
+    initNavbar();
+    
+    // Si nous sommes sur la page d'accueil, initier le carrousel
+    if (path === '/') {
+        const { initHeroCarousel } = await import('./components/herocarousel.js');
+        initHeroCarousel('.hero-carousel');
+    }
+};
+
+// Navigation sans rechargement de page
+window.navigate = (pathname) => {
+    window.history.pushState({}, pathname, window.location.origin + pathname);
+    router();
+};
+
+// Écouteurs d'événements pour le cycle de vie du routeur
+window.addEventListener('popstate', router);
+document.addEventListener('DOMContentLoaded', router);

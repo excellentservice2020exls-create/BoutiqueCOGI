@@ -11,7 +11,10 @@ export function createFooter() {
                 <h4>BOUTIQUE</h4>
                 <ul>
                     <li><button class="footer-link-btn" onclick="navigate('/collection?cat=femme')">FEMME</button></li>
-                    <li><button class="footer-link-btn" onclick="navigate('/collection?cat=accessoire')">ACCESSOIRES</button></li>
+                    <li><button class="footer-link-btn" onclick="navigate('/collection?cat=homme')">HOMME</button></li>
+                    <li><button class="footer-link-btn" onclick="navigate('/collection?cat=enfant')">ENFANT</button></li>
+                    <li><button class="footer-link-btn" onclick="navigate('/collection?cat=sac')">SAC</button></li>
+                    <li><button class="footer-link-btn" onclick="navigate('/collection?cat=accessoire')">ACCESSOIRE</button></li>
                 </ul>
             </div>
             <div class="footer-col">

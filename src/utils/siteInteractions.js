@@ -338,6 +338,22 @@ export function loadCollectionData(category = null) {
     afficherProduits(produits, 'product-grid');
 }
 
+export function loadHomeCategoryData() {
+    const categorySections = [
+        { key: 'Femme', containerId: 'grid-habit-femme' },
+        { key: 'Homme', containerId: 'grid-habit-homme' },
+        { key: 'Enfant', containerId: 'grid-habit-enfant' },
+        { key: 'chaussure', containerId: 'grid-habit-chaussure' },
+        { key: 'sac', containerId: 'grid-habit-sac' },
+        { key: 'accessoire', containerId: 'grid-habit-accessoire' }
+    ];
+
+    categorySections.forEach(({ key, containerId }) => {
+        const produits = productsData?.catalogue?.[key] || [];
+        afficherProduits(produits, containerId);
+    });
+}
+
 export function initSiteInteractions() {
     attachGlobalListeners();
     initSidebarInteractions();

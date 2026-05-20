@@ -6,7 +6,7 @@ import { renderCollection } from './pages/collection.js';
 import { renderProductDetails } from './pages/productdetail.js';
 import { initNavbar } from './components/navbar.js';
 import { initHeroCarousel } from './components/herocarousel.js';
-import { initSiteInteractions, loadCollectionData } from './utils/siteInteractions.js';
+import { initSiteInteractions, loadCollectionData, loadHomeCategoryData } from './utils/siteInteractions.js';
 
 const app = document.getElementById('app');
 
@@ -30,6 +30,7 @@ const router = async () => {
 
     if (path === '/') {
         initHeroCarousel('.hero-carousel');
+        loadHomeCategoryData();
     }
 
     if (path === '/collection') {

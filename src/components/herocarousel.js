@@ -12,7 +12,7 @@ export function createHeroCarouselHTML(slides) {
     `).join('');
 
     return `
-    <section class="hero-carousel" aria-label="Vitrine Principale">
+    <section id="hero" class="hero-carousel" aria-label="Vitrine Principale">
         <div class="carousel-track">${slidesHTML}</div>
         <div class="dots"></div>
         <button class="nav-btn prev" aria-label="Précédent">❮</button>

@@ -231,7 +231,7 @@ img {
     left: 0;
     width: var(--sidebar-width);
     height: 100vh;
-    background: var(--dark);
+    background: linear-gradient(180deg, rgba(8, 13, 29, 0.98) 0%, rgba(18, 24, 47, 0.98) 100%);
     color: var(--white);
     z-index: 1100;
     display: flex;
@@ -239,15 +239,17 @@ img {
     transition: var(--transition-slow);
     overflow-y: auto;
     overflow-x: hidden;
+    box-shadow: 4px 0 30px rgba(0, 0, 0, 0.35);
 }
 
 
 .sidebar-header {
-    padding: 20px 24px;
+    padding: 22px 24px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     min-height: var(--navbar-height);
     display: flex;
     align-items: center;
+    background: rgba(255, 255, 255, 0.02);
 }
 
 .sidebar-logo {
@@ -311,7 +313,7 @@ img {
 .sidebar-link:hover,
 .sidebar-link.active {
     color: var(--white);
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.08);
 }
 
 .sidebar-link:hover::before,
@@ -320,7 +322,7 @@ img {
 }
 
 .sidebar-link.active {
-    background: rgba(46, 196, 182, 0.1);
+    background: rgba(46, 196, 182, 0.14);
 }
 
 .sidebar-link i:first-child {
@@ -350,7 +352,7 @@ img {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    background: rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 0.03);
 }
 
 .sidebar-item.has-submenu.open .sidebar-submenu {
@@ -388,10 +390,10 @@ img {
 }
 
 .sidebar-footer {
-    padding: 16px 24px;
+    padding: 18px 24px;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
     font-size: 0.72rem;
-    color: rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.45);
     text-align: center;
 }
 
@@ -458,7 +460,8 @@ img {
 }
 
 /* Navigation */
-.nav {
+.nav,
+.nav-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -470,6 +473,12 @@ img {
   font-size: 22px;
   cursor: pointer;
   backdrop-filter: blur(6px);
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .prev { left: 12px; }
@@ -486,8 +495,8 @@ img {
 }
 
 .dots button {
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
   border: none;
   background: rgba(255,255,255,0.4);
@@ -496,13 +505,17 @@ img {
 
 .dots button.active {
   background: white;
+  box-shadow: 0 0 0 4px rgba(255,255,255,0.15);
 }
 
 /* Mobile */
 @media (max-width: 768px) {
-  .nav {
+  .nav,
+  .nav-btn {
     padding: 8px;
     font-size: 18px;
+    width: 40px;
+    height: 40px;
   }
 }
    .hero {
@@ -1130,15 +1143,15 @@ img {
    FOOTER
    ============================================ */
 .footer {
-    background: var(--bg-card);
-    border-top: 1px solid var(--border);
+    background: linear-gradient(180deg, rgba(8, 12, 28, 0.98) 0%, rgba(18, 24, 48, 0.98) 100%);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
     padding: 60px 24px 30px;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.78);
 }
 
 .footer-top {
     display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    grid-template-columns: 1.5fr 1fr 1fr;
     gap: 60px;
     padding: 60px 40px;
     max-width: 1200px;
@@ -1226,22 +1239,23 @@ img {
 
 .footer-col ul li {
     margin-bottom: 10px;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     display: flex;
     align-items: center;
     gap: 8px;
+    color: rgba(255, 255, 255, 0.72);
 }
 
 .footer-col ul li i {
-    width: 16px;
+    width: 18px;
     text-align: center;
     color: var(--turquoise-light);
-    font-size: 0.8rem;
-    opacity: 0.7;
+    font-size: 0.85rem;
+    opacity: 0.8;
 }
 
 .footer-col ul li a {
-    color: rgba(255, 255, 255, 0.55);
+    color: rgba(255, 255, 255, 0.75);
     transition: var(--transition);
     display: flex;
     align-items: center;
@@ -1254,11 +1268,11 @@ img {
 }
 
 .footer-bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
     padding: 20px 40px;
     text-align: center;
     font-size: 0.78rem;
-    color: rgba(255, 255, 255, 0.35);
+    color: rgba(255, 255, 255, 0.55);
 }
 /* ============================================
    14. SIDEBAR COLLAPSED (Desktop)

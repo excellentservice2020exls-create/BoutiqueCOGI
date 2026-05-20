@@ -12,7 +12,7 @@ export function renderSocialSection() {
                 <div class="contact-icon turquoise"><i class="fab fa-whatsapp"></i></div>
                 <h3>WhatsApp</h3>
                 <p>Contactez notre service client</p>
-                <a href="https://wa.me/243819000000" target="_blank" rel="noopener noreferrer" class="contact-link">Discuter sur WhatsApp</a>
+                <a href="#" data-social="whatsapp" data-message="Bonjour Boutique COGI, je souhaite commander" class="contact-link">Discuter sur WhatsApp</a>
             </div>
             <div class="contact-card fade-in-up">
                 <div class="contact-icon rose"><i class="fas fa-envelope"></i></div>
@@ -30,19 +30,19 @@ export function renderSocialSection() {
             <div class="title-underline"></div>
         </div>
         <div class="social-grid">
-            <a href="https://wa.me/243819000000" target="_blank" rel="noopener noreferrer" class="social-card whatsapp">
+            <a href="#" data-social="whatsapp" class="social-card whatsapp">
                 <div class="social-icon"><i class="fab fa-whatsapp"></i></div>
                 <h3>WhatsApp</h3>
             </a>
-            <a href="#" class="social-card facebook">
+            <a href="#" data-social="facebook" class="social-card facebook">
                 <div class="social-icon"><i class="fab fa-facebook-f"></i></div>
                 <h3>Facebook</h3>
             </a>
-            <a href="#" class="social-card instagram">
+            <a href="#" data-social="instagram" class="social-card instagram">
                 <div class="social-icon"><i class="fab fa-instagram"></i></div>
                 <h3>Instagram</h3>
             </a>
-            <a href="#" class="social-card tiktok">
+            <a href="#" data-social="tiktok" class="social-card tiktok">
                 <div class="social-icon"><i class="fab fa-tiktok"></i></div>
                 <h3>TikTok</h3>
             </a>

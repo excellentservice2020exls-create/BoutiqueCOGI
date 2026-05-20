@@ -14,6 +14,7 @@ export function createHeroCarouselHTML(slides) {
     return `
     <section class="hero-carousel" aria-label="Vitrine Principale">
         <div class="carousel-track">${slidesHTML}</div>
+        <div class="dots"></div>
         <button class="nav-btn prev" aria-label="Précédent">❮</button>
         <button class="nav-btn next" aria-label="Suivant">❯</button>
     </section>

@@ -5,8 +5,8 @@ import { renderHome } from './pages/home.js';
 import { renderCollection } from './pages/collection.js';
 import { renderProductDetails } from './pages/productdetail.js';
 import { initNavbar } from './components/navbar.js';
-// Importer tes données simulées
-// import productsData from './data/products.json'; 
+import { initHeroCarousel } from './components/herocarousel.js';
+import { initSiteInteractions, loadCollectionData } from './utils/siteInteractions.js';
 
 const app = document.getElementById('app');
 
@@ -19,20 +19,21 @@ const routes = {
 
 // Routeur performant basé sur l'API History
 const router = async () => {
-    // Nettoyage de l'URL pour gérer les paramètres (ex: /product?id=123)
     const path = window.location.pathname;
     const renderFunction = routes[path] || routes['/'];
-    
-    // Injection sécurisée avec DOMPurify si des données externes sont utilisées
-    app.innerHTML = renderFunction(); 
-    
-    // Réinitialisation du DOM (EventListeners) après chaque rendu
+    const urlParams = new URLSearchParams(window.location.search);
+    const category = urlParams.get('cat');
+
+    app.innerHTML = renderFunction(category);
     initNavbar();
-    
-    // Si nous sommes sur la page d'accueil, initier le carrousel
+    initSiteInteractions();
+
     if (path === '/') {
-        const { initHeroCarousel } = await import('./components/herocarousel.js');
         initHeroCarousel('.hero-carousel');
+    }
+
+    if (path === '/collection') {
+        loadCollectionData(category);
     }
 };
 

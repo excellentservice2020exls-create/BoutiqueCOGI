@@ -1,5 +1,5 @@
 // src/pages/productdetail.js
-//  import { createNavbarHTML } from '../components/navbar.js';
+import { createNavbarHTML } from '../components/navbar.js';
 import { createFooter } from '../components/footer.js';
 
 export function renderProductDetails() {

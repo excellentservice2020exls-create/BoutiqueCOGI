@@ -1,9 +1,9 @@
-// scr/main.js
+// src/main.js
 // Importation des fonctions de rendu pour chaque page
 
-import { renderHome } from './pages/Home.js';
-import { renderCollection } from './pages/Collection.js';
-import { renderProductDetails } from './pages/ProductDetails.js';
+import { renderHome } from './pages/home.js';
+import { renderCollection } from './pages/collection.js';
+import { renderProductDetails } from './pages/productdetail.js';
 import { initNavbar } from './components/navbar.js';
 // Importer tes données simulées
 // import productsData from './data/products.json'; 

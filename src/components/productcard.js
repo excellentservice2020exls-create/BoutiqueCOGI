@@ -4,7 +4,8 @@ export function renderProductCard(product) {
     // Utilisation de valeurs par défaut pour la robustesse
     const name = product?.name || 'Article Inconnu';
     const price = product?.price || '0.00';
-    const image = product?.image || '/placeholder.jpg';
+    const image = product?.image || '/placeholder.webp
+    ';
     const id = product?.id || '0';
     const formattedPrice = price.toString().trim();
 

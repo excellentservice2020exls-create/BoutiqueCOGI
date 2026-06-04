@@ -6,7 +6,7 @@ import { renderCollection } from './pages/collection.js';
 import { renderProductDetails } from './pages/productdetail.js';
 import { initNavbar } from './components/navbar.js';
 import { initHeroCarousel } from './components/herocarousel.js';
-import { initSiteInteractions, loadCollectionData, loadHomeCategoryData } from './utils/siteInteractions.js';
+import { initSiteInteractions, loadCollectionData, loadHomeCategoryData, loadProductDetailData } from './utils/siteInteractions.js';
 
 const app = document.getElementById('app');
 
@@ -23,6 +23,7 @@ const router = async () => {
     const renderFunction = routes[path] || routes['/'];
     const urlParams = new URLSearchParams(window.location.search);
     const category = urlParams.get('cat');
+    const productId = urlParams.get('id');
 
     app.innerHTML = renderFunction(category);
     initNavbar();
@@ -35,6 +36,10 @@ const router = async () => {
 
     if (path === '/collection') {
         loadCollectionData(category);
+    }
+
+    if (path === '/product') {
+        loadProductDetailData(productId);
     }
 };
 

@@ -113,6 +113,55 @@ export async function loadCollectionData(category) {
 }
 
 /**
+ * Charge les détails d'un produit spécifique
+ */
+export async function loadProductDetailData(productId) {
+    const container = document.getElementById('product-detail-content');
+    if (!productId) {
+        displayError('product-detail-content', "Identifiant du produit manquant.");
+        return;
+    }
+
+    try {
+        const data = await fetchWithRetry(API_URL);
+        
+        // Recherche du produit dans toutes les catégories du catalogue
+        const allProducts = Object.values(data.catalogue).flat();
+        const product = allProducts.find(p => p.id === productId);
+
+        if (!product) {
+            displayError('product-detail-content', "Désolé, ce produit n'existe pas ou n'est plus disponible.");
+            return;
+        }
+
+        // Mise à jour dynamique du DOM
+        container.innerHTML = `
+            <div class="product-details-container">
+                <div class="product-gallery">
+                    <img src="${product.image}" alt="${product.nom}" class="fade-in">
+                </div>
+                <div class="product-info-full">
+                    <span class="section-tag">Référence: #${product.id}</span>
+                    <h1 class="hero-title">${product.nom}</h1>
+                    <p class="product-price">${product.prix}</p>
+                    <div class="product-badges">
+                        <span class="badge badge-size"><i class="fas fa-ruler-combined"></i> Tailles: ${product.taille}</span>
+                        <span class="badge badge-color"><i class="fas fa-palette"></i> Couleur: ${product.couleur}</span>
+                    </div>
+                    <p class="product-description">Cet article de notre collection ${product.couleur} est disponible en tailles ${product.taille}. Contactez-nous pour plus d'informations sur la coupe et les matières.</p>
+                    <div class="action-buttons">
+                        <a href="https://wa.me/243819538325?text=Bonjour, je souhaite commander l'article ${product.nom} (Réf: ${product.id})" target="_blank" class="hero-btn centered">
+                            <i class="fab fa-whatsapp"></i> Commander via WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>`;
+    } catch (error) {
+        displayError('product-detail-content', "Erreur lors de la récupération des détails.");
+    }
+}
+
+/**
  * Initialise les interactions globales (Sidebar, Scroll, etc.)
  */
 export function initSiteInteractions() {

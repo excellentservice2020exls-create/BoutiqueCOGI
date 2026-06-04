@@ -23,6 +23,16 @@ export function renderHome() {
         { type: 'image', src: '/images/Media-p-20260218/pict13.jpeg' }
     ];
 
+    const categories = [
+        { id: 'tous', title: 'Voir Tout', desc: "L'intégralité de nos collections.", img: 'pict01.webp' },
+        { id: 'Femme', title: 'Habit Femme', desc: "Robes élégantes et ensembles raffinés.", img: 'pict01.webp' },
+        { id: 'Homme', title: 'Habit Homme', desc: "Costumes impeccables et looks décontractés.", img: 'pict01.jpeg' },
+        { id: 'Enfant', title: 'Habit Enfant', desc: "Mode adorable et confortable.", img: 'pict01.jpeg' },
+        { id: 'chaussure', title: 'Chaussure Dame', desc: "Escarpins et sandales pour chaque tenue.", img: 'pict01.jpeg' },
+        { id: 'sac', title: 'Sac Dame', desc: "Sacs à main et pochettes de luxe.", img: 'pict01.jpeg' },
+        { id: 'accessoire', title: 'Accessoire', desc: "Bijoux et montres pour sublimer votre style.", img: 'pict01.jpeg' }
+    ];
+
     return `
         ${createNavbarHTML()}
         <div class="main-wrapper" id="main-wrapper">
@@ -43,62 +53,16 @@ export function renderHome() {
                     </div>
 
                     <div class="boutique-grid">
-                        <div class="boutique-card fade-in-up" onclick="handleCategoryAction('tous')">
-                            <img src="Media-p-20260218/pict01.webp" alt="Tout voir" style="width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-md);">
-                            <div class="card-body">
-                                <h3>Voir Tout</h3>
-                                <p>Explorez l'intégralité de nos collections en un seul coup d'œil.</p>
-                                <span class="card-link">Tout découvrir <i class="fas fa-arrow-right"></i></span>
+                        ${categories.map(cat => `
+                            <div class="boutique-card fade-in-up" data-category="${cat.id}">
+                                <img src="Media-p-20260218/${cat.img}" alt="${cat.title}">
+                                <div class="card-body">
+                                    <h3>${cat.title}</h3>
+                                    <p>${cat.desc}</p>
+                                    <span class="card-link">Découvrir <i class="fas fa-arrow-right"></i></span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="boutique-card fade-in-up" onclick="handleCategoryAction('Femme')">
-                            <img src="Media-p-20260218/pict01.webp" alt="Détail Produit" style="width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-md);">
-                            <div class="card-body">
-                                <h3>Habit Femme</h3>
-                                <p>Robes élégantes, ensembles raffinés pour la femme moderne.</p>
-                                <span class="card-link">Découvrir <i class="fas fa-arrow-right"></i></span>
-                            </div>
-                        </div>
-                        <div class="boutique-card fade-in-up" onclick="handleCategoryAction('Homme')">
-                            <img src="Media-p-20260218/pict01.jpeg" alt="Détail Produit" style="width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-md);">
-                            <div class="card-body">
-                                <h3>Habit Homme</h3>
-                                <p>Costumes impeccables, chemises et looks décontractés.</p>
-                                <span class="card-link">Découvrir <i class="fas fa-arrow-right"></i></span>
-                            </div>
-                        </div>
-                        <div class="boutique-card fade-in-up" onclick="handleCategoryAction('Enfant')">
-                            <img src="Media-p-20260218/pict01.jpeg" alt="Détail Produit" style="width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-md);">
-                            <div class="card-body">
-                                <h3>Habit Enfant</h3>
-                                <p>Mode adorable et confortable pour les petits.</p>
-                                <span class="card-link">Découvrir <i class="fas fa-arrow-right"></i></span>
-                            </div>
-                        </div>
-                        <div class="boutique-card fade-in-up" onclick="handleCategoryAction('chaussure')">
-                            <img src="Media-p-20260218/pict01.jpeg" alt="Détail Produit" style="width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-md);">
-                            <div class="card-body">
-                                <h3>Chaussure Dame</h3>
-                                <p>Escarpins, sandales, et bottines pour chaque tenue.</p>
-                                <span class="card-link">Découvrir <i class="fas fa-arrow-right"></i></span>
-                            </div>
-                        </div>
-                        <div class="boutique-card fade-in-up" onclick="handleCategoryAction('sac')">
-                            <img src="Media-p-20260218/pict01.jpeg" alt="Détail Produit" style="width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-md);">
-                            <div class="card-body">
-                                <h3>Sac Dame</h3>
-                                <p>Sacs à main, pochettes et cabas de luxe.</p>
-                                <span class="card-link">Découvrir <i class="fas fa-arrow-right"></i></span>
-                            </div>
-                        </div>
-                        <div class="boutique-card fade-in-up" onclick="handleCategoryAction('accessoire')">
-                            <img src="Media-p-20260218/pict01.jpeg" alt="Détail Produit" style="width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-md);">
-                            <div class="card-body">
-                                <h3>Accessoire</h3>
-                                <p>Bijoux, montres, lunettes et autres pour sublimer votre style.</p>
-                                <span class="card-link">Découvrir <i class="fas fa-arrow-right"></i></span>
-                            </div>
-                        </div>
+                        `).join('')}
                     </div>
                 </section>
 

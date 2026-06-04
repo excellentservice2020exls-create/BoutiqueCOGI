@@ -17,29 +17,24 @@ export function renderProductDetails() {
     return `
         ${createNavbarHTML()}
         <div class="main-wrapper" id="main-wrapper">
-            <main class="main-content" style="padding-top: 120px; padding-bottom: 80px;">
-                <div class="product-details-container" style="max-width: 1200px; margin: 0 auto; display: flex; gap: 40px; padding: 0 40px;">
+            <main class="main-content detail-page-padding" id="product-detail-content">
+                <div class="product-details-container" id="detail-container">
                     
-                    <div class="product-gallery" style="flex: 1;">
-                        <img src="Media-p-20260218/pict01.webp" alt="Détail Produit" style="width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-md);">
+                    <div class="product-gallery skeleton-image" style="min-height: 500px;">
+                        <!-- L'image sera injectée ici -->
                     </div>
                     
-                    <div class="product-info-full" style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
-                        <span class="section-tag">Référence: #${productId || '0000'}</span>
-                        <h1 class="hero-title" style="font-size: 2.5rem; margin-bottom: 10px;">Robe d'Émeraude</h1>
-                        <p class="product-price" style="font-size: 2rem; color: var(--rose); font-weight: 900; margin-bottom: 20px;">120.00 $</p>
-                        
-                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 30px;">
-                            Une pièce d'exception conçue pour sublimer votre silhouette. Tissu de haute qualité, finitions faites main, parfaite pour vos soirées mondaines.
-                        </p>
-                        
-                        <div style="display: flex; gap: 15px;">
-                            <button class="hero-btn" style="flex: 1; justify-content: center;">
-                                <i class="fab fa-whatsapp"></i> Commander via WhatsApp
-                            </button>
+                    <div class="product-info-full">
+                        <div class="skeleton-title" style="width: 150px; height: 20px; margin-bottom: 20px;"></div>
+                        <div class="skeleton-title" style="width: 80%; height: 40px; margin-bottom: 20px;"></div>
+                        <div class="skeleton-line" style="width: 100px; height: 30px; margin-bottom: 30px;"></div>
+                        <div class="skeleton-line"></div>
+                        <div class="skeleton-line"></div>
+                        <div class="skeleton-line short"></div>
+                        <div class="action-buttons" style="margin-top: 40px;">
+                            <div class="skeleton-line" style="width: 100%; height: 50px; border-radius: 30px;"></div>
                         </div>
                     </div>
-
                 </div>
             </main>
             ${createFooter()}

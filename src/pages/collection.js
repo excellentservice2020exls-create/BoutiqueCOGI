@@ -1,4 +1,9 @@
 // src/pages/collection.js
+// Ce fichier contient la fonction de rendu pour la page de collection, qui affiche les produits d'une catégorie spécifique (femme, homme, enfant).
+// La fonction renderCollection prend un paramètre category pour déterminer quelle collection afficher, et génère le HTML correspondant en utilisant les composants de la navbar et du footer.
+// Importation des fonctions de création de la navbar et du footer
+// La fonction renderCollection génère le HTML pour la page de collection en fonction de la catégorie spécifiée (femme, homme, enfant).
+
 import { createNavbarHTML } from '../components/navbar.js';
 import { createFooter } from '../components/footer.js';
 

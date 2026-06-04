@@ -1,4 +1,8 @@
 // src/pages/home.js
+// Ce fichier contient la fonction de rendu pour la page d'accueil, qui affiche le carrousel d'images et les sections de produits.
+// En conditions réelles, tu pourrais également inclure une section de produits en promotion ou les meilleures ventes directement sur la page d'accueil.
+// Note : Les données du carrousel sont strictement définies ici pour garantir une expérience cohérente et éviter les erreurs liées à des données dynamiques mal formatées.
+
 import { createNavbarHTML } from '../components/navbar.js';
 import { createHeroCarouselHTML } from '../components/herocarousel.js';
 import { renderSocialSection } from '../components/social.js';

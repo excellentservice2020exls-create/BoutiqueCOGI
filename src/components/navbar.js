@@ -1,20 +1,46 @@
 // src/components/navbar.js
+
+/**
+ * Gère le clic sur une catégorie : filtre si sur accueil, sinon navigue vers collection
+ */
+window.handleCategoryAction = (category, element) => {
+    // Gestion de l'état actif visuel
+    const buttons = document.querySelectorAll('.navbar-item');
+    buttons.forEach(btn => btn.classList.remove('active'));
+    
+    let targetBtn = element;
+    // Si l'appel vient d'une carte (pas d'élément passé), on cherche le bouton correspondant
+    if (!targetBtn && category !== 'tous') {
+        targetBtn = Array.from(buttons).find(btn => 
+            btn.textContent.trim().toLowerCase() === category.toLowerCase()
+        );
+    }
+
+    if (targetBtn) targetBtn.classList.add('active');
+
+    if (window.location.pathname === '/') {
+        import('../utils/siteInteractions.js').then(m => m.filterHomeCategory(category));
+    } else {
+        navigate(`/collection?cat=${category.toLowerCase()}`);
+    }
+};
+
 export function createNavbarHTML() {
     return `
     <nav class="navbar" id="navbar">
         <div class="navbar-left">
-            <div class="logo-container" id="logo-animated" role="button" aria-label="Retour à l'accueil" onclick="navigate('/')">
+            <div class="logo-container" id="logo-animated" role="button" aria-label="Retour à l'accueil" onclick="navigate('/'); document.querySelectorAll('.navbar-item').forEach(b => b.classList.remove('active'));">
                 <div class="logo-icon"><i class="fas fa-gem"></i></div>
                 <span class="logo-text">Boutique <span class="logo-highlight">COGI</span></span>
             </div>
         </div>
         <div class="navbar-right">
-            <button class="navbar-item" onclick="navigate('/collection?cat=femme')"><span>Femme</span></button>
-            <button class="navbar-item" onclick="navigate('/collection?cat=homme')"><span>Homme</span></button>
-            <button class="navbar-item" onclick="navigate('/collection?cat=enfant')"><span>Enfant</span></button>
-            <button class="navbar-item" onclick="navigate('/collection?cat=chaussure')"><span>Chaussure</span></button>
-            <button class="navbar-item" onclick="navigate('/collection?cat=sac')"><span>Sac</span></button>
-            <button class="navbar-item" onclick="navigate('/collection?cat=accessoire')"><span>Accessoire</span></button>
+            <button class="navbar-item" onclick="handleCategoryAction('Femme', this)"><span>Femme</span></button>
+            <button class="navbar-item" onclick="handleCategoryAction('Homme', this)"><span>Homme</span></button>
+            <button class="navbar-item" onclick="handleCategoryAction('Enfant', this)"><span>Enfant</span></button>
+            <button class="navbar-item" onclick="handleCategoryAction('chaussure', this)"><span>Chaussure</span></button>
+            <button class="navbar-item" onclick="handleCategoryAction('sac', this)"><span>Sac</span></button>
+            <button class="navbar-item" onclick="handleCategoryAction('accessoire', this)"><span>Accessoire</span></button>
         </div>
         <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Ouvrir le menu">
             <i class="fas fa-bars"></i>
@@ -30,7 +56,6 @@ export function createNavbarHTML() {
                     <polyline points="18 17 13 12 18 7"></polyline>
                 </svg>
             </button>
-            <button class="sidebar-close" id="sidebar-close" aria-label="Fermer le menu"><i class="fas fa-times"></i></button>
         </div>
         <ul class="sidebar-menu">
             <li class="sidebar-item">
@@ -73,7 +98,6 @@ export function createNavbarHTML() {
 
 export function initNavbar() {
     const toggleBtn = document.getElementById('sidebar-toggle');
-    const closeBtn = document.getElementById('sidebar-close');
     const sidebar = document.getElementById('sidebar');
     const overlay = document.getElementById('sidebar-overlay');
     const navbar = document.getElementById('navbar');
@@ -86,7 +110,6 @@ export function initNavbar() {
     };
 
     toggleBtn.addEventListener('click', toggleSidebar);
-    closeBtn?.addEventListener('click', toggleSidebar);
     overlay.addEventListener('click', toggleSidebar);
 
     // Effet visuel au défilement optimisé (pas de throttle lourd, utilisation de requestAnimationFrame)

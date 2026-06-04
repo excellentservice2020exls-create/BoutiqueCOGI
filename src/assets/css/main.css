@@ -34,6 +34,15 @@ img {
     max-width: 100%;
     display: block;
 }
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--turquoise);
+    transition: var(--transition);
+}
+
+h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover {
+    color: var(--rose);
+}
  
 /* ==================== PERSONNALISATION SCROLLBAR ==================== */
 /* Chrome, Edge, and Safari */
@@ -136,15 +145,17 @@ img {
     font-family: 'Playfair Display', serif;
     font-size: 1.4rem;
     font-weight: 700;
-    color: var(--dark);
+    color: var(--turquoise);
+    transition: var(--transition);
     animation: logoTextShimmer 4s ease-in-out infinite;
 }
 
+.logo-text:hover {
+    color: var(--rose);
+}
+
 .logo-highlight {
-    background: linear-gradient(135deg, var(--turquoise), var(--rose));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: inherit;
     font-weight: 900;
 }
 
@@ -166,6 +177,8 @@ img {
     font-size: 0.9rem;
     font-weight: 600;
     color: var(--turquoise);
+    background: transparent;
+    border: 1px solid var(--turquoise);
     padding: 8px 18px;
     border-radius: var(--radius-xl);
     cursor: pointer;
@@ -184,12 +197,15 @@ img {
     border-radius: inherit;
 }
 
-.navbar-item:hover::before {
+.navbar-item:hover::before,
+.navbar-item.active::before {
     opacity: 1;
 }
 
-.navbar-item:hover {
+.navbar-item:hover,
+.navbar-item.active {
     color: var(--rose);
+    border-color: var(--rose);
     transform: translateY(-1px);
 }
 
@@ -265,12 +281,14 @@ img {
     color: var(--turquoise-light);
     font-size: 1.2rem;
 }
-
+/* Titre sidebar */
 .sidebar-logo span {
-    background: linear-gradient(135deg, var(--turquoise-light), var(--rose-light));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--turquoise);
+    transition: var(--transition);
+}
+
+.sidebar-logo:hover span {
+    color: var(--rose);
 }
 
 .sidebar-menu {
@@ -651,16 +669,14 @@ img {
     font-family: 'Playfair Display', serif;
     font-size: clamp(2.5rem, 5vw, 4.5rem);
     font-weight: 800;
-    color: var(--white);
+    color: var(--turquoise);
+    transition: var(--transition);
     line-height: 1.1;
     margin-bottom: 20px;
 }
 
-.hero-title span {
-    background: linear-gradient(135deg, var(--turquoise-light), var(--rose-light));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+.hero-title:hover {
+    color: var(--rose);
 }
 
 .hero-subtitle {
@@ -765,9 +781,14 @@ img {
     font-family: 'Playfair Display', serif;
     font-size: clamp(2rem, 4vw, 3rem);
     font-weight: 800;
-    color: var(--dark);
+    color: var(--turquoise);
+    transition: var(--transition);
     margin-bottom: 14px;
     letter-spacing: 2px;
+}
+
+.section-title:hover {
+    color: var(--rose);
 }
 
 .section-desc {
@@ -869,8 +890,13 @@ img {
     font-family: 'Playfair Display', serif;
     font-size: 1.25rem;
     font-weight: 700;
-    color: var(--dark);
+    color: var(--turquoise);
+    transition: var(--transition);
     margin-bottom: 8px;
+}
+
+.boutique-card:hover h3 {
+    color: var(--rose);
 }
 
 .card-body p {
@@ -950,8 +976,13 @@ img {
     font-family: 'Playfair Display', serif;
     font-size: clamp(1.8rem, 3vw, 2.5rem);
     font-weight: 700;
-    color: var(--white);
+    color: var(--turquoise);
+    transition: var(--transition);
     margin-bottom: 16px;
+}
+
+.promo-content h2:hover {
+    color: var(--rose);
 }
 
 .promo-content p {
@@ -1044,8 +1075,13 @@ img {
     font-family: 'Playfair Display', serif;
     font-size: 1.3rem;
     font-weight: 700;
-    color: var(--dark);
+    color: var(--turquoise);
+    transition: var(--transition);
     margin-bottom: 8px;
+}
+
+.contact-card:hover h3 {
+    color: var(--rose);
 }
 
 .contact-card p {
@@ -1113,8 +1149,13 @@ img {
 .social-card h3 {
     font-size: 0.95rem;
     font-weight: 700;
-    color: var(--dark);
+    color: var(--turquoise);
+    transition: var(--transition);
     margin-bottom: 4px;
+}
+
+.social-card:hover h3 {
+    color: var(--rose);
 }
 
 .social-card p {
@@ -1219,11 +1260,16 @@ img {
     font-family: 'Playfair Display', serif;
     font-size: 0.95rem;
     font-weight: 700;
-    color: var(--white);
+    color: var(--turquoise);
+    transition: var(--transition);
     margin-bottom: 20px;
     letter-spacing: 1px;
     position: relative;
     padding-bottom: 10px;
+}
+
+.footer-col h4:hover {
+    color: var(--rose);
 }
 
 .footer-col h4::after {
@@ -1554,8 +1600,13 @@ img {
     font-family: 'Playfair Display', serif;
     font-size: 1.1rem;
     font-weight: 700;
-    color: var(--dark);
+    color: var(--turquoise);
+    transition: var(--transition);
     margin-bottom: 8px;
+}
+
+.product-card:hover .product-title {
+    color: var(--rose);
 }
 
 .product-price {
@@ -1755,6 +1806,13 @@ img {
     cursor: pointer;
     transition: var(--transition);
     font-size: 0.9rem;
+}
+
+/* ============================================
+   GESTION DE LA VISIBILITÉ DES SECTIONS
+   ============================================ */
+.section-catalogue.hidden-section {
+    display: none !important;
 }
 
 /* ============================================

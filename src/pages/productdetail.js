@@ -26,7 +26,7 @@ export function renderProductDetails() {
                     
                     <div class="product-info-full" style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
                         <span class="section-tag">Référence: #${productId || '0000'}</span>
-                        <h1 class="hero-title" style="color: var(--dark); font-size: 2.5rem; margin-bottom: 10px;">Robe d'Émeraude</h1>
+                        <h1 class="hero-title" style="font-size: 2.5rem; margin-bottom: 10px;">Robe d'Émeraude</h1>
                         <p class="product-price" style="font-size: 2rem; color: var(--rose); font-weight: 900; margin-bottom: 20px;">120.00 $</p>
                         
                         <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 30px;">

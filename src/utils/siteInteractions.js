@@ -313,6 +313,39 @@ function attachGlobalListeners() {
     isSiteInteractionsInitialized = true;
 }
 
+/**
+ * Gère l'affichage exclusif des sections sur la page d'accueil
+ * @param {string} categoryKey - La clé de la catégorie ou 'tous'
+ */
+export function filterHomeCategory(categoryKey) {
+    const sections = {
+        'tous': 'catalogue-tous',
+        'Femme': 'catalogue-femme',
+        'Homme': 'catalogue-homme',
+        'Enfant': 'catalogue-enfant',
+        'chaussure': 'catalogue-chaussure',
+        'sac': 'catalogue-sac',
+        'accessoire': 'catalogue-accessoire'
+    };
+
+    Object.entries(sections).forEach(([key, id]) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+
+        if (key === categoryKey) {
+            el.classList.remove('hidden-section');
+            if (key !== 'tous') {
+                el.scrollIntoView({ behavior: 'smooth' });
+            }
+        } else {
+            el.classList.add('hidden-section');
+        }
+    });
+    
+    // Réinitialise l'observateur pour les éléments nouvellement affichés
+    initScrollReveal();
+}
+
 function initSearchFilter() {
     const searchInput = document.getElementById('product-search');
     if (!searchInput) return;
@@ -385,6 +418,9 @@ export function loadHomeCategoryData() {
         const produits = productsData?.catalogue?.[key] || [];
         afficherProduits(produits, containerId);
     });
+
+    // Par défaut : Afficher uniquement "Toute la collection"
+    filterHomeCategory('tous');
 }
 
 export function initSiteInteractions() {

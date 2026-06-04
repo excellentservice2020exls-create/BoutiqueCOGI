@@ -43,7 +43,7 @@ export function renderHome() {
                     </div>
 
                     <div class="boutique-grid">
-                        <div class="boutique-card fade-in-up" onclick="document.getElementById('catalogue-tous').scrollIntoView({ behavior: 'smooth' })">
+                        <div class="boutique-card fade-in-up" onclick="handleCategoryAction('tous')">
                             <img src="Media-p-20260218/pict01.webp" alt="Tout voir" style="width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-md);">
                             <div class="card-body">
                                 <h3>Voir Tout</h3>
@@ -51,7 +51,7 @@ export function renderHome() {
                                 <span class="card-link">Tout découvrir <i class="fas fa-arrow-right"></i></span>
                             </div>
                         </div>
-                        <div class="boutique-card fade-in-up" onclick="document.getElementById('catalogue-femme').scrollIntoView({ behavior: 'smooth' })">
+                        <div class="boutique-card fade-in-up" onclick="handleCategoryAction('Femme')">
                             <img src="Media-p-20260218/pict01.webp" alt="Détail Produit" style="width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-md);">
                             <div class="card-body">
                                 <h3>Habit Femme</h3>
@@ -59,7 +59,7 @@ export function renderHome() {
                                 <span class="card-link">Découvrir <i class="fas fa-arrow-right"></i></span>
                             </div>
                         </div>
-                        <div class="boutique-card fade-in-up" onclick="document.getElementById('catalogue-homme').scrollIntoView({ behavior: 'smooth' })">
+                        <div class="boutique-card fade-in-up" onclick="handleCategoryAction('Homme')">
                             <img src="Media-p-20260218/pict01.jpeg" alt="Détail Produit" style="width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-md);">
                             <div class="card-body">
                                 <h3>Habit Homme</h3>
@@ -67,7 +67,7 @@ export function renderHome() {
                                 <span class="card-link">Découvrir <i class="fas fa-arrow-right"></i></span>
                             </div>
                         </div>
-                        <div class="boutique-card fade-in-up" onclick="document.getElementById('catalogue-enfant').scrollIntoView({ behavior: 'smooth' })">
+                        <div class="boutique-card fade-in-up" onclick="handleCategoryAction('Enfant')">
                             <img src="Media-p-20260218/pict01.jpeg" alt="Détail Produit" style="width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-md);">
                             <div class="card-body">
                                 <h3>Habit Enfant</h3>
@@ -75,7 +75,7 @@ export function renderHome() {
                                 <span class="card-link">Découvrir <i class="fas fa-arrow-right"></i></span>
                             </div>
                         </div>
-                        <div class="boutique-card fade-in-up" onclick="document.getElementById('catalogue-chaussure').scrollIntoView({ behavior: 'smooth' })">
+                        <div class="boutique-card fade-in-up" onclick="handleCategoryAction('chaussure')">
                             <img src="Media-p-20260218/pict01.jpeg" alt="Détail Produit" style="width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-md);">
                             <div class="card-body">
                                 <h3>Chaussure Dame</h3>
@@ -83,7 +83,7 @@ export function renderHome() {
                                 <span class="card-link">Découvrir <i class="fas fa-arrow-right"></i></span>
                             </div>
                         </div>
-                        <div class="boutique-card fade-in-up" onclick="document.getElementById('catalogue-sac').scrollIntoView({ behavior: 'smooth' })">
+                        <div class="boutique-card fade-in-up" onclick="handleCategoryAction('sac')">
                             <img src="Media-p-20260218/pict01.jpeg" alt="Détail Produit" style="width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-md);">
                             <div class="card-body">
                                 <h3>Sac Dame</h3>
@@ -91,7 +91,7 @@ export function renderHome() {
                                 <span class="card-link">Découvrir <i class="fas fa-arrow-right"></i></span>
                             </div>
                         </div>
-                        <div class="boutique-card fade-in-up" onclick="document.getElementById('catalogue-accessoire').scrollIntoView({ behavior: 'smooth' })">
+                        <div class="boutique-card fade-in-up" onclick="handleCategoryAction('accessoire')">
                             <img src="Media-p-20260218/pict01.jpeg" alt="Détail Produit" style="width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-md);">
                             <div class="card-body">
                                 <h3>Accessoire</h3>

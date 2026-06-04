@@ -10,6 +10,7 @@ const observerOptions = {
 
 let fadeObserver;
 let isSiteInteractionsInitialized = false;
+let allProductsCache = [];
 
 const socialDataConfig = socialData?.reseauxSociaux || {};
 
@@ -312,6 +313,20 @@ function attachGlobalListeners() {
     isSiteInteractionsInitialized = true;
 }
 
+function initSearchFilter() {
+    const searchInput = document.getElementById('product-search');
+    if (!searchInput) return;
+
+    searchInput.addEventListener('input', debounce((e) => {
+        const query = e.target.value.toLowerCase().trim();
+        const filteredProducts = allProductsCache.filter(p => 
+            (p.nom && p.nom.toLowerCase().includes(query)) || 
+            (p.id && p.id.toString().includes(query))
+        );
+        afficherProduits(filteredProducts, 'grid-habit-tous');
+    }, 300));
+}
+
 function afficherProduits(produits, conteneurId) {
     const conteneur = document.getElementById(conteneurId);
     if (!conteneur) return;
@@ -339,6 +354,24 @@ export function loadCollectionData(category = null) {
 }
 
 export function loadHomeCategoryData() {
+    // 1. On récupère d'abord TOUS les produits uniques de toutes les catégories du JSON
+    const allProductsMap = new Map();
+    if (productsData?.catalogue) {
+        Object.values(productsData.catalogue).forEach(produitsCategorie => {
+            if (Array.isArray(produitsCategorie)) {
+                produitsCategorie.forEach(produit => {
+                    // On utilise l'ID comme clé pour éviter d'afficher deux fois le même produit 
+                    // s'il est présent dans plusieurs catégories.
+                    if (produit.id && !allProductsMap.has(produit.id)) {
+                        allProductsMap.set(produit.id, produit);
+                    }
+                });
+            }
+        });
+    }
+    allProductsCache = Array.from(allProductsMap.values());
+    afficherProduits(allProductsCache, 'grid-habit-tous');
+
     const categorySections = [
         { key: 'Femme', containerId: 'grid-habit-femme' },
         { key: 'Homme', containerId: 'grid-habit-homme' },
@@ -362,4 +395,5 @@ export function initSiteInteractions() {
     initBoutiqueCardHover();
     initHeroParallax();
     initBackToTop();
+    initSearchFilter();
 }

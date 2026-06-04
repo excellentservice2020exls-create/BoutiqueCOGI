@@ -19,8 +19,8 @@ export function renderProductCard(product) {
                 <span class="badge badge-size"><i class="fas fa-ruler"></i> Tailles variées</span>
             </div>
             <p class="product-price">${formattedPrice}</p>
-            <button class="btn-buy" onclick="navigate('/product?id=${id}')">
-                <i class="fas fa-shopping-bag"></i> Découvrir
+            <button class="btn-buy" onclick="window.open('https://wa.me/243819538325', '_blank')">
+                <i class="fas fa-shopping-bag"></i> Acheter
             </button>
         </div>
     </div>

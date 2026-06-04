@@ -1757,6 +1757,41 @@ img {
     font-size: 0.9rem;
 }
 
+/* ============================================
+   BARRE DE RECHERCHE
+   ============================================ */
+.search-container {
+    max-width: 500px;
+    margin: 30px auto 0;
+}
+
+.search-wrapper {
+    position: relative;
+}
+
+.search-input {
+    width: 100%;
+    padding: 12px 20px 12px 45px;
+    border-radius: var(--radius-xl);
+    border: 2px solid var(--turquoise-glow);
+    background: var(--white);
+    outline: none;
+    transition: var(--transition);
+}
+
+.search-input:focus {
+    border-color: var(--turquoise);
+    box-shadow: 0 0 0 4px rgba(46, 196, 182, 0.1);
+}
+
+.search-wrapper i {
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--turquoise);
+}
+
 .error-button:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(232, 72, 127, 0.3);

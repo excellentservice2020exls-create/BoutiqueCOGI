@@ -1,14 +1,19 @@
 // src/pages/productdetail.js
+// Remarque l'utilisation des backticks (`) pour la multi-ligne
+// Ce fichier est dédié à la page de détail d'un produit. Il extrait l'ID du produit depuis l'URL et affiche les informations correspondantes.
+// En conditions réelles, tu ferais une recherche dans productsData via l'ID pour afficher les détails spécifiques du produit sélectionné.
+
 import { createNavbarHTML } from '../components/navbar.js';
 import { createFooter } from '../components/footer.js';
-
+// Note : En conditions réelles, tu importerais également les données des produits pour afficher les détails spécifiques.
 export function renderProductDetails() {
     // Extraction de l'ID depuis l'URL
+    // Exemple d'URL : http://localhost:3000/product?id=123
     const urlParams = new URLSearchParams(window.location.search);
     const productId = urlParams.get('id');
 
     // En conditions réelles, tu ferais une recherche dans productsData via l'ID
-    
+    // const product = productsData.find(p => p.id === productId);
     return `
         ${createNavbarHTML()}
         <div class="main-wrapper" id="main-wrapper">
@@ -16,7 +21,7 @@ export function renderProductDetails() {
                 <div class="product-details-container" style="max-width: 1200px; margin: 0 auto; display: flex; gap: 40px; padding: 0 40px;">
                     
                     <div class="product-gallery" style="flex: 1;">
-                        <img src="Media-p-20260218/pict01.jpeg" alt="Détail Produit" style="width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-md);">
+                        <img src="Media-p-20260218/pict01.webp" alt="Détail Produit" style="width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-md);">
                     </div>
                     
                     <div class="product-info-full" style="flex: 1; display: flex; flex-direction: column; justify-content: center;">

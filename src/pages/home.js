@@ -40,10 +40,7 @@ export function renderHome() {
 
                     <div class="boutique-grid">
                         <div class="boutique-card fade-in-up" onclick="document.getElementById('catalogue-femme').scrollIntoView({ behavior: 'smooth' })">
-                            <div class="card-image" style="background: linear-gradient(135deg, #ff6b9d 0%, #c44569 100%);">
-                                <div class="card-icon"><i class="fas fa-female"></i></div>
-                                <div class="card-overlay"><span class="card-tag">Femme</span></div>
-                            </div>
+                            <img src="Media-p-20260218/pict01.webp" alt="Détail Produit" style="width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-md);">
                             <div class="card-body">
                                 <h3>Habit Femme</h3>
                                 <p>Robes élégantes, ensembles raffinés pour la femme moderne.</p>
@@ -51,10 +48,7 @@ export function renderHome() {
                             </div>
                         </div>
                         <div class="boutique-card fade-in-up" onclick="document.getElementById('catalogue-homme').scrollIntoView({ behavior: 'smooth' })">
-                            <div class="card-image" style="background: linear-gradient(135deg, #2EC4B6 0%, #1a9e92 100%);">
-                                <div class="card-icon"><i class="fas fa-male"></i></div>
-                                <div class="card-overlay"><span class="card-tag">Homme</span></div>
-                            </div>
+                            <img src="Media-p-20260218/pict01.jpeg" alt="Détail Produit" style="width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-md);">
                             <div class="card-body">
                                 <h3>Habit Homme</h3>
                                 <p>Costumes impeccables, chemises et looks décontractés.</p>
@@ -62,10 +56,7 @@ export function renderHome() {
                             </div>
                         </div>
                         <div class="boutique-card fade-in-up" onclick="document.getElementById('catalogue-enfant').scrollIntoView({ behavior: 'smooth' })">
-                            <div class="card-image" style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);">
-                                <div class="card-icon"><i class="fas fa-child"></i></div>
-                                <div class="card-overlay"><span class="card-tag">Enfant</span></div>
-                            </div>
+                            <img src="Media-p-20260218/pict01.jpeg" alt="Détail Produit" style="width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-md);">
                             <div class="card-body">
                                 <h3>Habit Enfant</h3>
                                 <p>Mode adorable et confortable pour les petits.</p>
@@ -73,10 +64,7 @@ export function renderHome() {
                             </div>
                         </div>
                         <div class="boutique-card fade-in-up" onclick="document.getElementById('catalogue-chaussure').scrollIntoView({ behavior: 'smooth' })">
-                            <div class="card-image" style="background: linear-gradient(135deg, #40CFC0 0%, #2EC4B6 100%);">
-                                <div class="card-icon"><i class="fas fa-shoe-prints"></i></div>
-                                <div class="card-overlay"><span class="card-tag">Chaussures</span></div>
-                            </div>
+                            <img src="Media-p-20260218/pict01.jpeg" alt="Détail Produit" style="width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-md);">
                             <div class="card-body">
                                 <h3>Chaussure Dame</h3>
                                 <p>Escarpins, sandales, et bottines pour chaque tenue.</p>
@@ -84,10 +72,7 @@ export function renderHome() {
                             </div>
                         </div>
                         <div class="boutique-card fade-in-up" onclick="document.getElementById('catalogue-sac').scrollIntoView({ behavior: 'smooth' })">
-                            <div class="card-image" style="background: linear-gradient(135deg, #E8487F 0%, #ff6b9d 100%);">
-                                <div class="card-icon"><i class="fas fa-shopping-bag"></i></div>
-                                <div class="card-overlay"><span class="card-tag">Sacs</span></div>
-                            </div>
+                            <img src="Media-p-20260218/pict01.jpeg" alt="Détail Produit" style="width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-md);">
                             <div class="card-body">
                                 <h3>Sac Dame</h3>
                                 <p>Sacs à main, pochettes et cabas de luxe.</p>
@@ -95,10 +80,7 @@ export function renderHome() {
                             </div>
                         </div>
                         <div class="boutique-card fade-in-up" onclick="document.getElementById('catalogue-accessoire').scrollIntoView({ behavior: 'smooth' })">
-                            <div class="card-image" style="background: linear-gradient(135deg, #2EC4B6 0%, #ff6b9d 100%);">
-                                <div class="card-icon"><i class="fas fa-ring"></i></div>
-                                <div class="card-overlay"><span class="card-tag">Accessoires</span></div>
-                            </div>
+                            <img src="Media-p-20260218/pict01.jpeg" alt="Détail Produit" style="width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-md);">
                             <div class="card-body">
                                 <h3>Accessoire</h3>
                                 <p>Bijoux, montres, lunettes et autres pour sublimer votre style.</p>

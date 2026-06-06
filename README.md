@@ -1,7 +1,8 @@
 
-# 🎨 Boutique COGI - E-Commerce Vanilla JavaScript
+# 🎨 Boutique COGI - E-Commerce Vanilla JavaScript + Vite v8.0.13, HTML5 et CSS3
+---
 
-Une boutique en ligne moderne et luxueuse construite avec **Vanilla JavaScript, HTML5 et CSS3** — sans dépendances externes majeures.
+Une boutique en ligne moderne et luxueuse construite avec **Vanilla JavaScript + Vite v8.0.13, HTML5 et CSS3** — sans dépendances externes majeures.
 
 ## 📋 Caractéristiques Principales
 
@@ -21,15 +22,12 @@ Une boutique en ligne moderne et luxueuse construite avec **Vanilla JavaScript, 
 ### Installation
 ```bash
 # Ouvrir avec serveur local
-python -m http.server 8000
-# Ou: npx http-server
+ npx http-server
 ```
 
 Accès: `http://localhost:8000`
 
 ---
-
-## ⚙️ Améliorations Implémentées (2026-05-18)
 
 ### Phase 1 : Robustesse ✅
 
@@ -49,8 +47,6 @@ Accès: `http://localhost:8000`
 
 ---
 
-## 📊 Score : 6.8 → 8.5/10 🎯
-
 **Améliorations:**
 - ✅ Gestion erreurs robuste + retry 3x
 - ✅ Skeleton loaders + indicateur chargement
@@ -66,7 +62,7 @@ Accès: `http://localhost:8000`
 
 ### Variables de Données
 
-Éditer `data.json` :
+ `data.json` :
 ```json
 {
   "reseauxSociaux": {
@@ -88,7 +84,7 @@ Accès: `http://localhost:8000`
   "prix": "95$",
   "taille": "42 à 48",
   "couleur": "Noir",
-  "image": "Media-p-20260218/image.jpeg"
+  "image": "Media-p-20260218/image.webp"
 }
 ```
 
@@ -113,7 +109,7 @@ Desktop   > 992px   → Sidebar complet
 
 ---
 
-## 🚀 Prochaines Étapes
+## 🚀  Étapes
 
 **Phase 3 - Maintenance (Optionnel):**
 - [ ] Modularisation ES6
@@ -128,6 +124,3 @@ Desktop   > 992px   → Sidebar complet
 - [ ] PWA / ServiceWorker
 
 ---
-
-**Version:** 1.2 (2026-05-18)  
-**Status:** ✅ Production Ready

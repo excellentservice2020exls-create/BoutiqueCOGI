@@ -42,7 +42,33 @@ Un produit doit pouvoir appartenir à plusieurs catalogues et plusieurs categori
 Un catalogue peut contenir plusieurs categories (filtrable par catégorie).
 Les produits seront pour importés depuis une base de données et mis à jour automatiquement.
 
-Voici comment il est structuré :
+Le navbar doit contenir :
+- **Logo ("Boutique COGI")** : Un lien vers la page d'accueil.
+- **Liens de navigation (accueil, Categories, promotions, Nouveautées)** : Liens vers les différentes pages du site.
+- **Barre de recherche (categorie, produits, catalogue, prix, )** : Barre de recherche pour trouver des produits.
+- **Icône de panier + badge (nb total produits)** : Les produits et le nombre total de produits dans le panier, apparait seulement lorsque authentifié.
+- **wishlist + badge (nb total produits)** : Les produits et le nombre total de produits dans le wishlist, meme si non-authentifié.
+- **Icône de profile (Connexion, Inscription)** : Icône de profile pour la connexion et l'inscription.
+
+
+Le sidebar doit contenir :
+- **Logo (COGI)** : Un lien vers la page d'accueil.
+- **Liens de navigation (Femme, Homme, Enfant, Chaussures, Sacs, Accessoires, Contact)** : Liens vers les différentes pages du site.
+- **Icône de panier** : Les produits et le nombre total de produits dans le panier, apparait seulement lorsque authentifié.
+- **Icône de profil** : Icône de profile pour la connexion et l'inscription.
+
+Le footer doit contenir : 
+- **Logo (COGI)** : Un lien vers la page d'accueil.
+- **copiright + annee dynamique** : Les informations de copyright.
+- **Liens de navigation (catalogue, categories, promotions, Nouveautées, Contact, social networks)** : Liens vers les différentes pages du site. Ces liens seront disposés en colonnes.
+- **condition d'utilisation** : conditions d'utilisation du site. Un lien vers la page d'utilisation.
+- **condition generales de vente** : conditions generales de vente du site. Un lien vers la page des conditions generales de vente.
+- **politique de confidentialite** : politique de confidentialite du site. Un lien vers la page de politique de confidentialite.
+- **Gestionnaire de cookies** : Gestionnaire de cookies du site. Un lien vers le gestionnaire de cookies.
+- **reseaux sociaux** : Liens vers les réseaux sociaux du site.
+
+
+
 
 ## 1. Front-end (Interface Utilisateur)
 - **HTML5** pour la structure des pages (Page d'accueil, Page Produit, Page Profile, Page Contact, Page Panier, Page Commande.).
@@ -89,16 +115,16 @@ BoutiqueCOGI/
 ├── public/           # Fichiers statiques (images, etc.)
 ├── src/
 │   └── components/   # Composants React/HTML
-│       ├── admin/        # Composants d'administration
-│       ├── UI/           # Composants d'interface utilisateur
+│       ├── admin/        # Composants d'exclusivite (administration)
+│       ├── auth/           # Composants d'interface utilisateur et de connexion (connexion, inscription, etc.)
 │       ├── catalog/      # Composants de catalogue
 │       ├── category/     # Composants de catégorie
 │       ├── product/      # Composants de produit
-│       ├── price-currency/        # Composants de prix (pour gerer les prix en 
-│           ├── currency-selector/ # Convertisseur de devise
-│           ├── price-list/
-│           ├── currency-converter/
-│           ├── exchange-rates/
+│       ├── price-currency/        # Composants de prix (pour gerer les prix en dollar ou en franc Congolais USD)
+│           ├── currency-selector/ # definir les devises (USD et CDF) ainsi que la devise par defaut (USD)
+│           ├── price-list/        # Liste des prix (les prix sont definis ici et seront utiliser par tous les autres composants)
+│           ├── currency-converter/  # Convertisseur de devise (par default Dollar USD et definir la relation de conversion entre le Dollar et le franc congolais (CDF))
+│           ├── exchange-rates/    # La liste des taux de change horodaté (generee et mise à jour manuellement chaque jour à 08H00, 12H00 et 16H00)
 │       ├── cart/         # Composants de panier (pour gerer la selection des produits pour les commandes)
 │       ├── order/        # Composants de commande (commande redirigée vers whatsapp)
 │       ├── wishlist/     # Composants de liste de souhaits

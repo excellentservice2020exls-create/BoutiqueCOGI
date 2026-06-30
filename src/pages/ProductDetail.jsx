@@ -57,10 +57,7 @@ export default function ProductDetail() {
   const catalogs = selectedProduct.catalogs || []
 
   const handleAddToCart = () => {
-    if (!isAuthenticated) {
-      // Message ou redirection
-      return
-    }
+    if (!isAuthenticated) return
     if (selectedVariant && selectedVariant.status === 'IN_STOCK') {
       addItem(selectedProduct, selectedVariant, quantity)
     }
@@ -77,7 +74,6 @@ export default function ProductDetail() {
 
   return (
     <Container className="product-detail-page py-5">
-      {/* Breadcrumb */}
       <Breadcrumb className="mb-4">
         <Breadcrumb.Item as={Link} to="/">Accueil</Breadcrumb.Item>
         {categories[0] && (
@@ -87,27 +83,16 @@ export default function ProductDetail() {
       </Breadcrumb>
 
       <Row className="g-5">
-        {/* Images */}
         <Col lg={6}>
           <div className="product-gallery">
             <div className="main-image-wrapper">
-              <img
-                src={images[selectedImage]?.url || '/placeholder.jpg'}
-                alt={selectedProduct.name}
-                className="main-image"
-              />
-              {catalogs.map((cat) => (
-                cat.slug === 'promotions' && <Badge key={cat.id} className="gallery-badge badge-sale">Promo</Badge>
-              ))}
+              <img src={images[selectedImage]?.url || '/placeholder.jpg'} alt={selectedProduct.name} className="main-image" />
+              {catalogs.map((cat) => cat.slug === 'promotions' && <Badge key={cat.id} className="gallery-badge badge-sale">Promo</Badge>)}
             </div>
             {images.length > 1 && (
               <div className="thumbnail-list">
                 {images.slice(0, 4).map((img, idx) => (
-                  <button
-                    key={img.id}
-                    className={`gallery-thumb ${selectedImage === idx ? 'active' : ''}`}
-                    onClick={() => setSelectedImage(idx)}
-                  >
+                  <button key={img.id} className={`gallery-thumb ${selectedImage === idx ? 'active' : ''}`} onClick={() => setSelectedImage(idx)}>
                     <img src={img.url} alt={`${selectedProduct.name} ${idx + 1}`} />
                   </button>
                 ))}
@@ -116,40 +101,27 @@ export default function ProductDetail() {
           </div>
         </Col>
 
-        {/* Info */}
         <Col lg={6}>
           <div className="product-info">
             <div className="product-meta">
               {catalogs.slice(0, 3).map((cat) => (
-                <Link key={cat.id} to={`/collection/${cat.slug}`} className="catalog-tag">
-                  {cat.name}
-                </Link>
+                <Link key={cat.id} to={`/collection/${cat.slug}`} className="catalog-tag">{cat.name}</Link>
               ))}
             </div>
-
             <h1 className="product-title">{selectedProduct.name}</h1>
             <p className="product-sku">Référence: {selectedVariant?.sku || selectedProduct.sku}</p>
-
             <div className="product-price-section">
-              {selectedVariant && (
-                <span className="product-price">{formatPrice(selectedVariant.price)}</span>
-              )}
+              {selectedVariant && <span className="product-price">{formatPrice(selectedVariant.price)}</span>}
               {getStatusBadge(selectedVariant?.status)}
             </div>
-
             <p className="product-description">{selectedProduct.description}</p>
 
-            {/* Variants */}
             {variants.length > 1 && (
               <div className="variant-section mb-4">
                 <h6 className="variant-label">Variantes:</h6>
                 <div className="variant-list">
                   {variants.map((variant) => (
-                    <button
-                      key={variant.id}
-                      className={`variant-btn ${selectedVariant?.id === variant.id ? 'active' : ''}`}
-                      onClick={() => setSelectedVariant(variant)}
-                    >
+                    <button key={variant.id} className={`variant-btn ${selectedVariant?.id === variant.id ? 'active' : ''}`} onClick={() => setSelectedVariant(variant)}>
                       {variant.color && <span className="variant-color" style={{ background: variant.color }} />}
                       {variant.size && <span className="variant-size">{variant.size}</span>}
                     </button>
@@ -158,56 +130,31 @@ export default function ProductDetail() {
               </div>
             )}
 
-            {/* Quantity & Actions */}
             <div className="product-actions-section">
               <div className="quantity-selector">
                 <Button variant="light" onClick={() => setQuantity(Math.max(1, quantity - 1))}>-</Button>
-                <Form.Control
-                  type="number"
-                  value={quantity}
-                  onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}
-                  className="qty-field"
-                />
+                <Form.Control type="number" value={quantity} onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value) || 1))} className="qty-field" />
                 <Button variant="light" onClick={() => setQuantity(quantity + 1)}>+</Button>
               </div>
-
-              <Button
-                className="btn-turquoise add-to-cart-btn"
-                onClick={handleAddToCart}
-                disabled={!isAuthenticated || selectedVariant?.status !== 'IN_STOCK'}
-              >
+              <Button className="btn-turquoise add-to-cart-btn" onClick={handleAddToCart} disabled={!isAuthenticated || selectedVariant?.status !== 'IN_STOCK'}>
                 <FiShoppingCart className="me-2" />
                 {isAuthenticated ? 'Ajouter au panier' : 'Connectez-vous pour commander'}
               </Button>
-
-              <Button
-                variant="light"
-                className={`wishlist-btn ${isInWishlist(selectedProduct.id) ? 'active' : ''}`}
-                onClick={() => toggleItem(selectedProduct)}
-              >
+              <Button variant="light" className={`wishlist-btn ${isInWishlist(selectedProduct.id) ? 'active' : ''}`} onClick={() => toggleItem(selectedProduct)}>
                 <FiHeart />
               </Button>
-
-              <Button variant="light" className="share-btn">
-                <FiShare2 />
-              </Button>
+              <Button variant="light" className="share-btn"><FiShare2 /></Button>
             </div>
 
-            {/* Guarantees */}
             <div className="product-guarantees">
               <div className="guarantee-item"><FiTruck /> Livraison rapide</div>
               <div className="guarantee-item"><FiRefreshCw /> Retours sous 14 jours</div>
               <div className="guarantee-item"><FiShield /> Paiement sécurisé</div>
             </div>
 
-            {/* Categories */}
             <div className="product-categories-detail">
               <strong>Catégories:</strong>
-              {categories.map((cat) => (
-                <Link key={cat.id} to={`/category/${cat.slug}`} className="category-link">
-                  {cat.name}
-                </Link>
-              ))}
+              {categories.map((cat) => <Link key={cat.id} to={`/category/${cat.slug}`} className="category-link">{cat.name}</Link>)}
             </div>
           </div>
         </Col>

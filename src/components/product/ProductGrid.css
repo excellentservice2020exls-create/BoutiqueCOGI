@@ -1,0 +1,6 @@
+.product-grid-section { padding: 2rem 0; }
+.product-grid-header { margin-bottom: 3rem; }
+.product-grid-loading { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 300px; }
+.product-grid-empty { text-align: center; padding: 4rem 2rem; }
+.empty-icon { font-size: 4rem; margin-bottom: 1rem; }
+.product-grid-empty h3 { color: var(--gray-700); font-size: var(--font-size-xl); margin-bottom: 0.5rem; }

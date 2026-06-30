@@ -1,0 +1,6 @@
+.contact-form { padding: 0.5rem 0; }
+.contact-label { font-weight: 500; font-size: var(--font-size-sm); color: var(--gray-700); margin-bottom: 0.5rem; display: flex; align-items: center; }
+.contact-input { border: 2px solid var(--gray-200); border-radius: var(--radius-lg); padding: 0.875rem 1rem; font-size: var(--font-size-base); transition: all var(--transition-fast); }
+.contact-input:focus { border-color: var(--turquoise); box-shadow: 0 0 0 3px rgba(64, 224, 208, 0.15); }
+.contact-input.is-invalid { border-color: var(--danger); }
+.contact-input.is-invalid:focus { box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.15); }

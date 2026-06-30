@@ -19,15 +19,12 @@ export default function Contact() {
         <h1 className="section-title">Contactez-nous</h1>
         <p className="text-muted">Nous sommes à votre écoute pour toute question</p>
       </div>
-
       <Row className="g-4 mb-5">
         {contactInfo.map((info) => (
           <Col key={info.title} md={6} lg={3}>
             <Card className="contact-info-card text-center h-100">
               <Card.Body>
-                <div className="contact-info-icon">
-                  <info.icon size={24} />
-                </div>
+                <div className="contact-info-icon"><info.icon size={24} /></div>
                 <h6 className="contact-info-title">{info.title}</h6>
                 <p className="contact-info-text mb-0">{info.content}</p>
               </Card.Body>
@@ -35,7 +32,6 @@ export default function Contact() {
           </Col>
         ))}
       </Row>
-
       <Row className="g-4">
         <Col lg={7}>
           <Card className="contact-form-card">

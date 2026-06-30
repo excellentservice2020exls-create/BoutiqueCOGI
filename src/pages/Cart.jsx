@@ -3,14 +3,12 @@ import { Container, Row, Col, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { FiShoppingBag, FiArrowRight } from 'react-icons/fi'
 import { useCartStore } from '@store/cartStore'
-import { useAuthStore } from '@store/authStore'
 import CartItem from '@components/cart/CartItem'
 import CartSummary from '@components/cart/CartSummary'
 import './Cart.css'
 
 export default function Cart() {
   const { items } = useCartStore()
-  const { isAuthenticated } = useAuthStore()
 
   if (items.length === 0) {
     return (
@@ -30,13 +28,10 @@ export default function Cart() {
   return (
     <Container className="cart-page py-5">
       <h1 className="cart-title mb-4">Mon Panier</h1>
-
       <Row className="g-4">
         <Col lg={8}>
           <div className="cart-items">
-            {items.map((item) => (
-              <CartItem key={item.id} item={item} />
-            ))}
+            {items.map((item) => <CartItem key={item.id} item={item} />)}
           </div>
         </Col>
         <Col lg={4}>

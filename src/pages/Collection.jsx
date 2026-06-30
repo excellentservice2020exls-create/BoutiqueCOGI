@@ -56,7 +56,6 @@ export default function Collection() {
 
   return (
     <Container className="collection-page py-5">
-      {/* Header */}
       <div className="collection-header d-flex justify-content-between align-items-center mb-4">
         <div>
           <h1 className="collection-title">{getPageTitle()}</h1>
@@ -67,92 +66,71 @@ export default function Collection() {
             <FiFilter className="me-2" /> Filtres
           </Button>
           <div className="view-toggle d-none d-md-flex">
-            <Button variant={viewMode === 'grid' ? 'primary' : 'light'} onClick={() => setViewMode('grid')}>
-              <FiGrid />
-            </Button>
-            <Button variant={viewMode === 'list' ? 'primary' : 'light'} onClick={() => setViewMode('list')}>
-              <FiList />
-            </Button>
+            <Button variant={viewMode === 'grid' ? 'primary' : 'light'} onClick={() => setViewMode('grid')}><FiGrid /></Button>
+            <Button variant={viewMode === 'list' ? 'primary' : 'light'} onClick={() => setViewMode('list')}><FiList /></Button>
           </div>
         </div>
       </div>
 
       <Row>
-        {/* Sidebar Filters - Desktop */}
         <Col lg={3} className="d-none d-lg-block">
           <div className="filters-sidebar">
             <h5 className="filters-title">Filtres</h5>
-
             <div className="filter-group">
               <h6>Catégories</h6>
               {categories.map((cat) => (
-                <Form.Check
-                  key={cat.id}
-                  type="checkbox"
-                  label={cat.name}
+                <Form.Check key={cat.id} type="checkbox" label={cat.name}
                   checked={filters.category === cat.slug}
-                  onChange={() => handleFilterChange('category', filters.category === cat.slug ? '' : cat.slug)}
-                />
+                  onChange={() => handleFilterChange('category', filters.category === cat.slug ? '' : cat.slug)} />
               ))}
             </div>
-
             <div className="filter-group">
               <h6>Catalogues</h6>
               {catalogs.map((cat) => (
-                <Form.Check
-                  key={cat.id}
-                  type="checkbox"
-                  label={cat.name}
+                <Form.Check key={cat.id} type="checkbox" label={cat.name}
                   checked={filters.catalog === cat.slug}
-                  onChange={() => handleFilterChange('catalog', filters.catalog === cat.slug ? '' : cat.slug)}
-                />
+                  onChange={() => handleFilterChange('catalog', filters.catalog === cat.slug ? '' : cat.slug)} />
               ))}
             </div>
-
             <div className="filter-group">
               <h6>Prix</h6>
               <Row className="g-2">
-                <Col>
-                  <Form.Control
-                    type="number"
-                    placeholder="Min"
-                    value={filters.priceMin}
-                    onChange={(e) => handleFilterChange('priceMin', e.target.value)}
-                  />
-                </Col>
-                <Col>
-                  <Form.Control
-                    type="number"
-                    placeholder="Max"
-                    value={filters.priceMax}
-                    onChange={(e) => handleFilterChange('priceMax', e.target.value)}
-                  />
-                </Col>
+                <Col><Form.Control type="number" placeholder="Min" value={filters.priceMin} onChange={(e) => handleFilterChange('priceMin', e.target.value)} /></Col>
+                <Col><Form.Control type="number" placeholder="Max" value={filters.priceMax} onChange={(e) => handleFilterChange('priceMax', e.target.value)} /></Col>
               </Row>
             </div>
-
-            <Button variant="outline-secondary" className="w-100" onClick={() => setFilters({
-              category: '', catalog: '', search: '', priceMin: '', priceMax: '', sortBy: 'newest'
-            })}>
+            <Button variant="outline-secondary" className="w-100" onClick={() => setFilters({ category: '', catalog: '', search: '', priceMin: '', priceMax: '', sortBy: 'newest' })}>
               Réinitialiser
             </Button>
           </div>
         </Col>
-
-        {/* Products */}
         <Col lg={9}>
           <ProductGrid products={products} isLoading={isLoading} />
         </Col>
       </Row>
 
-      {/* Mobile Filters */}
       <Offcanvas show={showFilters} onHide={() => setShowFilters(false)} placement="start">
         <Offcanvas.Header>
           <Offcanvas.Title>Filtres</Offcanvas.Title>
           <Button variant="link" onClick={() => setShowFilters(false)}><FiX /></Button>
         </Offcanvas.Header>
         <Offcanvas.Body>
-          {/* Mêmes filtres que desktop */}
+          <div className="filter-group">
+            <h6>Catégories</h6>
+            {categories.map((cat) => (
+              <Form.Check key={cat.id} type="checkbox" label={cat.name}
+                checked={filters.category === cat.slug}
+                onChange={() => handleFilterChange('category', filters.category === cat.slug ? '' : cat.slug)} />
+            ))}
+          </div>
+          <div className="filter-group">
+            <h6>Catalogues</h6>
+            {catalogs.map((cat) => (
+              <Form.Check key={cat.id} type="checkbox" label={cat.name}
+                checked={filters.catalog === cat.slug}
+                onChange={() => handleFilterChange('catalog', filters.catalog === cat.slug ? '' : cat.slug)} />
+            ))}
+          </div>
         </Offcanvas.Body>
       </Offcanvas>
     </Container>

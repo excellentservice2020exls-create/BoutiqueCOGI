@@ -23,7 +23,6 @@ export default function Order() {
   return (
     <Container className="order-page py-5">
       <h1 className="order-title mb-4">Passer la commande</h1>
-
       <Row className="g-4">
         <Col lg={7}>
           <Card className="order-form-card">
@@ -33,7 +32,6 @@ export default function Order() {
             </Card.Body>
           </Card>
         </Col>
-
         <Col lg={5}>
           <Card className="order-summary-card">
             <Card.Body className="p-4">

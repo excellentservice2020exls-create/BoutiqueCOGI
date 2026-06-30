@@ -11,7 +11,7 @@ const features = [
   { icon: FiShoppingBag, title: 'Large Choix', desc: 'Des milliers de produits tendance' },
   { icon: FiTruck, title: 'Livraison Rapide', desc: 'Partout en RDC' },
   { icon: FiShield, title: 'Paiement Sécurisé', desc: 'Via WhatsApp' },
-  { icon: FiHeadphones, title: 'Support 24/7', desc: 'À votre écoute' },
+  { icon: FiHeadphones, title: 'Support 24/7', desc: "À votre écoute" },
 ]
 
 const heroSlides = [
@@ -25,7 +25,7 @@ const heroSlides = [
   {
     image: '/images/hero-2.jpg',
     title: 'Promotions Spéciales',
-    subtitle: 'Jusqu\'à 50% de réduction',
+    subtitle: "Jusqu'à 50% de réduction",
     cta: 'Profiter',
     link: '/collection/promotions',
   },

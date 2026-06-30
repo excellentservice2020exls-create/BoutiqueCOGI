@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Container, Row, Col, Card, Form, Button, Nav, Tab } from 'react-bootstrap'
+import { Container, Row, Col, Card, Form, Button, Nav } from 'react-bootstrap'
 import { FiUser, FiShoppingBag, FiHeart, FiSettings, FiLogOut } from 'react-icons/fi'
 import { useAuthStore } from '@store/authStore'
 import { useWishlistStore } from '@store/wishlistStore'
@@ -35,9 +35,7 @@ export default function Profile() {
         <Col lg={3} className="mb-4">
           <Card className="profile-sidebar">
             <Card.Body className="text-center">
-              <div className="profile-avatar">
-                <FiUser size={40} />
-              </div>
+              <div className="profile-avatar"><FiUser size={40} /></div>
               <h5 className="profile-name">{user.user_metadata?.firstName || user.email}</h5>
               <p className="profile-email">{user.email}</p>
             </Card.Body>
@@ -60,7 +58,6 @@ export default function Profile() {
             </Nav>
           </Card>
         </Col>
-
         <Col lg={9}>
           {activeTab === 'profile' && (
             <Card className="profile-card">
@@ -71,35 +68,25 @@ export default function Profile() {
                     <Col md={6}>
                       <Form.Group className="mb-3">
                         <Form.Label>Prénom</Form.Label>
-                        <Form.Control
-                          value={profileData.firstName}
-                          onChange={(e) => setProfileData({ ...profileData, firstName: e.target.value })}
-                        />
+                        <Form.Control value={profileData.firstName} onChange={(e) => setProfileData({ ...profileData, firstName: e.target.value })} />
                       </Form.Group>
                     </Col>
                     <Col md={6}>
                       <Form.Group className="mb-3">
                         <Form.Label>Nom</Form.Label>
-                        <Form.Control
-                          value={profileData.lastName}
-                          onChange={(e) => setProfileData({ ...profileData, lastName: e.target.value })}
-                        />
+                        <Form.Control value={profileData.lastName} onChange={(e) => setProfileData({ ...profileData, lastName: e.target.value })} />
                       </Form.Group>
                     </Col>
                   </Row>
                   <Form.Group className="mb-3">
                     <Form.Label>Téléphone</Form.Label>
-                    <Form.Control
-                      value={profileData.phone}
-                      onChange={(e) => setProfileData({ ...profileData, phone: e.target.value })}
-                    />
+                    <Form.Control value={profileData.phone} onChange={(e) => setProfileData({ ...profileData, phone: e.target.value })} />
                   </Form.Group>
                   <Button type="submit" className="btn-turquoise">Mettre à jour</Button>
                 </Form>
               </Card.Body>
             </Card>
           )}
-
           {activeTab === 'wishlist' && (
             <Card className="profile-card">
               <Card.Body className="p-4">
@@ -109,16 +96,13 @@ export default function Profile() {
                 ) : (
                   <Row className="g-3">
                     {wishlistItems.map((item) => (
-                      <Col key={item.id} xs={6} md={4}>
-                        <WishlistItem item={item} />
-                      </Col>
+                      <Col key={item.id} xs={6} md={4}><WishlistItem item={item} /></Col>
                     ))}
                   </Row>
                 )}
               </Card.Body>
             </Card>
           )}
-
           {activeTab === 'orders' && (
             <Card className="profile-card">
               <Card.Body className="p-4">
@@ -127,7 +111,6 @@ export default function Profile() {
               </Card.Body>
             </Card>
           )}
-
           {activeTab === 'settings' && (
             <Card className="profile-card">
               <Card.Body className="p-4">

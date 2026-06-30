@@ -1,10 +1,6 @@
 .order-page { min-height: calc(100vh - var(--navbar-height) - 300px); }
 .order-title { font-size: var(--font-size-2xl); font-weight: 700; color: var(--gray-800); }
-.order-form-card, .order-summary-card {
-  border: none;
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-sm);
-}
+.order-form-card, .order-summary-card { border: none; border-radius: var(--radius-xl); box-shadow: var(--shadow-sm); }
 .order-item { padding: 0.75rem 0; border-bottom: 1px solid var(--gray-100); }
 .order-item-img { width: 50px; height: 50px; object-fit: cover; border-radius: var(--radius-md); }
 .order-item-name { font-weight: 500; font-size: var(--font-size-sm); }

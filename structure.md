@@ -1,10 +1,10 @@
-Mon projet est une plateforme web e-commerce en 'REACTJS' intitulé **Boutique COGI**. Les couleurs de base et de preference du site sont "Turquoise" et "Rose".
-Pas de systeme de paiement pour l'instant. La commande sera redirigée vers whatsapp. 
-Les catalogues de la page d'accueil seront : 
+Mon projet est une plateforme web e-commerce principalement concu avec 'REACTJS' et 'VITE' et intitulé **Boutique COGI**. Les couleurs de base et de preference du site sont "Turquoise" et "Rose".
+Pas de systeme de paiement pour l'instant. La commande (bien detaillee) sera redirigee vers whatsapp avec un message deja compose (Le client n'aura qu'à envoyer le message).
+Les catalogues de la page d'accueil seront (avec possibilite d'en ajouter d'autres): 
 - **Generale**
 - **Nouveautées**
 - **Promotions**
-Les categories des produits sont : 
+Les categories des produits sont (avec possibilite d'en ajouter d'autres): 
 - **Femme**
 - **Homme**
 - **Enfant**
@@ -50,12 +50,12 @@ Le navbar doit contenir :
 - **wishlist + badge (nb total produits)** : Les produits et le nombre total de produits dans le wishlist, meme si non-authentifié.
 - **Icône de profile (Connexion, Inscription)** : Icône de profile pour la connexion et l'inscription.
 
-
 Le sidebar doit contenir :
 - **Logo (COGI)** : Un lien vers la page d'accueil.
 - **Liens de navigation (Femme, Homme, Enfant, Chaussures, Sacs, Accessoires, Contact)** : Liens vers les différentes pages du site.
-- **Icône de panier** : Les produits et le nombre total de produits dans le panier, apparait seulement lorsque authentifié.
-- **Icône de profil** : Icône de profile pour la connexion et l'inscription.
+- **Icône de panier + badge (nb total produits)** : Les produits et le nombre total de produits dans le panier, apparait seulement lorsque authentifié.
+- **wishlist + badge (nb total produits)** : Les produits et le nombre total de produits dans le wishlist, meme si non-authentifié.
+- **Icône de profile (Connexion, Inscription)** : Icône de profile pour la connexion et l'inscription.
 
 Le footer doit contenir : 
 - **Logo (COGI)** : Un lien vers la page d'accueil.
@@ -67,9 +67,6 @@ Le footer doit contenir :
 - **Gestionnaire de cookies** : Gestionnaire de cookies du site. Un lien vers le gestionnaire de cookies.
 - **reseaux sociaux** : Liens vers les réseaux sociaux du site.
 
-
-
-
 ## 1. Front-end (Interface Utilisateur)
 - **HTML5** pour la structure des pages (Page d'accueil, Page Produit, Page Profile, Page Contact, Page Panier, Page Commande.).
 - **CSS3** pour le style et la mise en page.
@@ -77,7 +74,6 @@ Le footer doit contenir :
 - **React et ReactDom** pour le développement de l'interface utilisateur.
 - **React Toastify** pour les notifications.
 - **React Spinner** pour les indicateurs de chargement.
-
 
 ## 2. Back-end (Serveur & Logique)
 - **Node.js** est utilisé comme framework serveur.
@@ -108,7 +104,7 @@ Le footer doit contenir :
 - **Bootstrap** est utilisé pour le style et la mise en page.
 - **Zustand** est utilisé pour la gestion de l'état.
 
-## 4. Structure des Dossiers (Typique)
+## 4. Structure des Dossiers
 Pour un projet React/Vite, la structure ressemblerait à :
 ```
 BoutiqueCOGI/
@@ -124,7 +120,7 @@ BoutiqueCOGI/
 │           ├── currency-selector/ # definir les devises (USD et CDF) ainsi que la devise par defaut (USD)
 │           ├── price-list/        # Liste des prix (les prix sont definis ici et seront utiliser par tous les autres composants)
 │           ├── currency-converter/  # Convertisseur de devise (par default Dollar USD et definir la relation de conversion entre le Dollar et le franc congolais (CDF))
-│           ├── exchange-rates/    # La liste des taux de change horodaté (generee et mise à jour manuellement chaque jour à 08H00, 12H00 et 16H00)
+│           └── exchange-rates/    # La liste des taux de change horodaté (generee et mise à jour manuellement chaque jour à 08H00, 12H00 et 16H00)
 │       ├── cart/         # Composants de panier (pour gerer la selection des produits pour les commandes)
 │       ├── order/        # Composants de commande (commande redirigée vers whatsapp)
 │       ├── wishlist/     # Composants de liste de souhaits
@@ -137,13 +133,32 @@ BoutiqueCOGI/
 │   ├── app/          # pages, layout, globals
 │   ├── api/          # Routes d'API
 │   ├── hooks/        # Hooks
+│   ├── app/          # 
 │   ├── lib/          # Fonctions utilitaires
+│       ├── auth/     # auth
+│       ├── prisma/    # 
+│       ├── supabase/  # 
+│       ├── category/ # category
+│       ├── product/  # product
+│       ├── price-currency/  # price-currency
+│       ├── cart/  # cart
+│       ├── order/  # order
+│       ├── wishlist/  # wishlist
+│       ├── notification/  # notification
+│       ├── newsLetter/  # newsLetter
+│       ├── social/  # social
+│       ├── contact/  # contact
+│       ├── navbar/  # navbar
+│       └── footer/  # footer
+│   ├── pages/          # Pages
 │   ├── store/        # Zustand store
-│   ├── services/     # Services
+│   ├── supabase/       # Supabase
+│   ├── prisma/       # Prisma
 │   └── assets/       # Images, polices, icônes, etc
 ├── package-lock.json # Verrouille les versions des dépendances
 ├── bscript.js        # Scripts de la base de données
 ├── index.html        # Point d'entrée principal de l'application
+├── proxy.js          # Proxy pour les requêtes API
 ├── .env              # Variables d'environnement
 ├── .gitignore        # Fichiers à ignorer par Git
 └── package.json      # Dépendances et scripts
@@ -174,6 +189,23 @@ La plateforme doit avoir toutes les bases de la cybersecurite et plus encore.
 - **notification**
 
 ## 6. Pages
+Dans la conception des scripts pour les pages et les composants, il faudrait utiliser le modèle de conception suivant:
+- **Modulaire** :séparer les composants en petits modules réutilisables
+- **DRY** : ne pas répéter le code
+- **Component-Based** : utiliser les composants React
+- **RESTful API** : utiliser l'API REST
+- **Props** : utiliser les props pour la communication entre les composants
+- **State** : utiliser le state pour la gestion de l'état
+- **atomicite** : les composants doivent être atomiques et indépendants
+- **simplicite** : les composants doivent être simples et faciles à importer et exporter
+- **maintenance** : les composants doivent être faciles à maintenir
+- **robustesse** : les composants doivent être robustes et fiables
+- **flexibilite** : les composants doivent être flexibles et adaptables
+- **performance** : les composants doivent être performants et rapides
+- **securite** : les composants doivent être sécurisés et fiables
+
+## Pattern
+Completer ce projet avec les scripts et les fichiers manquants (si necessaire dans lib, hooks, api, etc) pour une experience complete et responsive.
 - **home.js** : Page d'accueil
 - **productdetail.js** : Page de détail du produit
 - **collection.js** : Page de collection

@@ -1,0 +1,4 @@
+.cart-page { min-height: calc(100vh - var(--navbar-height) - 300px); }
+.cart-title { font-size: var(--font-size-2xl); font-weight: 700; color: var(--gray-800); }
+.empty-cart { padding: 4rem 2rem; }
+.cart-items { background: var(--white); border-radius: var(--radius-xl); padding: 0 1.5rem; box-shadow: var(--shadow-sm); }

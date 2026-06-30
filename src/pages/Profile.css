@@ -1,0 +1,36 @@
+.profile-page { min-height: calc(100vh - var(--navbar-height) - 300px); }
+.profile-sidebar {
+  border: none;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+.profile-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, var(--turquoise), var(--rose));
+  color: var(--white);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+.profile-name { font-weight: 600; color: var(--gray-800); margin-bottom: 0.25rem; }
+.profile-email { color: var(--gray-500); font-size: var(--font-size-sm); }
+.profile-nav { padding: 0 1rem 1rem; }
+.profile-nav .nav-link {
+  color: var(--gray-600);
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-lg);
+  margin-bottom: 0.25rem;
+}
+.profile-nav .nav-link:hover, .profile-nav .nav-link.active {
+  background: rgba(64, 224, 208, 0.1);
+  color: var(--turquoise-dark);
+}
+.profile-card {
+  border: none;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+}

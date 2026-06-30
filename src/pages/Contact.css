@@ -1,0 +1,26 @@
+.contact-page { min-height: calc(100vh - var(--navbar-height) - 300px); }
+.contact-info-card {
+  border: none;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-base);
+}
+.contact-info-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+.contact-info-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, var(--turquoise), var(--turquoise-dark));
+  color: var(--white);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+.contact-info-title { font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; }
+.contact-info-text { color: var(--gray-500); font-size: var(--font-size-sm); }
+.contact-form-card, .contact-social-card {
+  border: none;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+}

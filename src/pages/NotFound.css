@@ -1,0 +1,19 @@
+.not-found-page {
+  min-height: calc(100vh - var(--navbar-height) - 300px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.not-found-content { padding: 3rem; }
+.not-found-code {
+  font-size: 8rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--turquoise), var(--rose));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+.not-found-title { font-size: var(--font-size-2xl); font-weight: 700; color: var(--gray-800); margin-bottom: 1rem; }
+.not-found-text { color: var(--gray-500); max-width: 400px; margin: 0 auto 2rem; }
+.not-found-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }

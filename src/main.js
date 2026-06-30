@@ -1,4 +1,6 @@
 // src/main.js
+// Fichier principal de l'application
+
 import { createNavbarHTML, initNavbar } from './components/navbar.js';
 import { createFooter } from './components/footer.js';
 
@@ -13,7 +15,7 @@ function initAppShell() {
     <main id="router-view"></main>
     ${createFooter()}
   `);
-  
+
   initNavbar();
   setupGlobalEvents();
 }
@@ -36,7 +38,7 @@ const router = async () => {
 
   const path = window.location.pathname;
   const getRenderFunction = routes[path] || routes['/'];
-  
+
   try {
     const renderFunction = await getRenderFunction();
     const urlParams = new URLSearchParams(window.location.search);
@@ -90,7 +92,7 @@ function setupGlobalEvents() {
     if (categoryBtn) {
       e.preventDefault();
       const category = categoryBtn.getAttribute('data-category');
-      
+
       // Gestion de la classe active visuelle
       document.querySelectorAll('[data-category]').forEach(btn => btn.classList.remove('active'));
       categoryBtn.classList.add('active');

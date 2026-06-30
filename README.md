@@ -1,16 +1,118 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+BoutiqueCOGI/
+├── public/
+│   ├── images/
+│   └── vite.svg
+├── src/
+│   ├── app/
+│   │   ├── App.jsx
+│   │   └── globals.css
+│   ├── components/
+│   │   ├── admin/
+│   │   │   ├── AdminDashboard.jsx
+│   │   │   └── AdminDashboard.css
+│   │   ├── auth/
+│   │   │   ├── Login.jsx
+│   │   │   ├── Register.jsx
+│   │   │   └── Auth.css
+│   │   ├── cart/
+│   │   │   ├── CartItem.jsx
+│   │   │   ├── CartItem.css
+│   │   │   ├── CartSummary.jsx
+│   │   │   └── CartSummary.css
+│   │   ├── contact/
+│   │   │   ├── ContactForm.jsx
+│   │   │   └── ContactForm.css
+│   │   ├── footer/
+│   │   │   ├── Footer.jsx
+│   │   │   └── Footer.css
+│   │   ├── navbar/
+│   │   │   ├── Navbar.jsx
+│   │   │   ├── Navbar.css
+│   │   │   ├── Sidebar.jsx
+│   │   │   └── Sidebar.css
+│   │   ├── newsLetter/
+│   │   │   ├── Newsletter.jsx
+│   │   │   └── Newsletter.css
+│   │   ├── notification/
+│   │   │   ├── NotificationBell.jsx
+│   │   │   └── NotificationBell.css
+│   │   ├── order/
+│   │   │   ├── OrderForm.jsx
+│   │   │   └── OrderForm.css
+│   │   ├── price-currency/
+│   │   │   ├── currency-converter/
+│   │   │   │   ├── CurrencyConverter.jsx
+│   │   │   │   └── CurrencyConverter.css
+│   │   │   ├── currency-selector/
+│   │   │   │   ├── CurrencySelector.jsx
+│   │   │   │   └── CurrencySelector.css
+│   │   │   ├── exchange-rates/
+│   │   │   │   ├── ExchangeRates.jsx
+│   │   │   │   └── ExchangeRates.css
+│   │   │   └── price-list/
+│   │   │       ├── PriceDisplay.jsx
+│   │   │       └── PriceDisplay.css
+│   │   ├── product/
+│   │   │   ├── ProductCard.jsx
+│   │   │   ├── ProductCard.css
+│   │   │   ├── ProductGrid.jsx
+│   │   │   └── ProductGrid.css
+│   │   ├── social/
+│   │   │   ├── SocialLinks.jsx
+│   │   │   └── SocialLinks.css
+│   │   └── wishlist/
+│   │       ├── WishlistItem.jsx
+│   │       └── WishlistItem.css
+│   ├── hooks/
+│   │   ├── ScrollToTop.js
+│   │   ├── useAuth.js
+│   │   ├── useCart.js
+│   │   ├── useCurrency.js
+│   │   ├── useDebounce.js
+│   │   ├── useLocalStorage.js
+│   │   ├── useProducts.js
+│   │   └── useWishlist.js
+│   ├── lib/
+│   │   ├── auth/
+│   │   │   └── authSchema.js
+│   │   ├── cart/
+│   │   │   └── cartSchema.js
+│   │   ├── contact/
+│   │   │   └── contactSchema.js
+│   │   └── product/
+│   │       └── productSchema.js
+│   ├── pages/
+│   │   ├── Cart.jsx
+│   │   ├── Cart.css
+│   │   ├── Collection.jsx
+│   │   ├── Collection.css
+│   │   ├── Contact.jsx
+│   │   ├── Contact.css
+│   │   ├── Home.jsx
+│   │   ├── Home.css
+│   │   ├── NotFound.jsx
+│   │   ├── NotFound.css
+│   │   ├── Order.jsx
+│   │   ├── Order.css
+│   │   ├── ProductDetail.jsx
+│   │   ├── ProductDetail.css
+│   │   ├── Profile.jsx
+│   │   └── Profile.css
+│   ├── prisma/
+│   │   └── schema.prisma
+│   ├── store/
+│   │   ├── authStore.js
+│   │   ├── cartStore.js
+│   │   ├── currencyStore.js
+│   │   ├── notificationStore.js
+│   │   ├── productStore.js
+│   │   └── wishlistStore.js
+│   ├── assets/
+│   └── main.jsx
+├── bscript.js
+├── index.html
+├── package.json
+├── proxy.js
+├── vite.config.js
+├── .env.example
+└── .gitignore

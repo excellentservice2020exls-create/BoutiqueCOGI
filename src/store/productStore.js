@@ -9,6 +9,12 @@ export const useProductStore = create((set, get) => ({
   fetchProducts: async (filters = {}) => {
     set({ isLoading: true, error: null })
     try {
+      if (!supabase) {
+        const msg = 'Supabase client not configured. Set VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY.'
+        console.warn(msg)
+        set({ error: msg, products: [] })
+        return []
+      }
       let query = supabase.from('products').select(`*, variants:product_variants(*), images:product_images(*), categories(*), catalogs(*)`)
       if (filters.category) query = query.eq('categories.slug', filters.category)
       if (filters.catalog) query = query.eq('catalogs.slug', filters.catalog)
@@ -23,6 +29,12 @@ export const useProductStore = create((set, get) => ({
   fetchProductBySlug: async (slug) => {
     set({ isLoading: true, error: null })
     try {
+      if (!supabase) {
+        const msg = 'Supabase client not configured.'
+        console.warn(msg)
+        set({ error: msg, selectedProduct: null })
+        return null
+      }
       const { data, error } = await supabase.from('products').select(`*, variants:product_variants(*), images:product_images(*), categories(*), catalogs(*)`).eq('slug', slug).single()
       if (error) throw error
       set({ selectedProduct: data })
@@ -33,6 +45,11 @@ export const useProductStore = create((set, get) => ({
 
   fetchCategories: async () => {
     try {
+      if (!supabase) {
+        console.warn('Supabase client not configured. fetchCategories skipped.')
+        set({ categories: [] })
+        return []
+      }
       const { data, error } = await supabase.from('categories').select('*').eq('isActive', true).order('sortOrder')
       if (error) throw error
       set({ categories: data || [] })
@@ -41,6 +58,11 @@ export const useProductStore = create((set, get) => ({
 
   fetchCatalogs: async () => {
     try {
+      if (!supabase) {
+        console.warn('Supabase client not configured. fetchCatalogs skipped.')
+        set({ catalogs: [] })
+        return []
+      }
       const { data, error } = await supabase.from('catalogs').select('*').eq('isActive', true).order('sortOrder')
       if (error) throw error
       set({ catalogs: data || [] })
@@ -49,6 +71,11 @@ export const useProductStore = create((set, get) => ({
 
   fetchFeatured: async () => {
     try {
+      if (!supabase) {
+        console.warn('Supabase client not configured. fetchFeatured skipped.')
+        set({ featuredProducts: [] })
+        return []
+      }
       const { data, error } = await supabase.from('products').select(`*, variants:product_variants(*), images:product_images(*)`).eq('isFeatured', true).eq('isActive', true).limit(8)
       if (error) throw error
       set({ featuredProducts: data || [] })
@@ -57,6 +84,11 @@ export const useProductStore = create((set, get) => ({
 
   fetchNewArrivals: async () => {
     try {
+      if (!supabase) {
+        console.warn('Supabase client not configured. fetchNewArrivals skipped.')
+        set({ newArrivals: [] })
+        return []
+      }
       const { data, error } = await supabase.from('products').select(`*, variants:product_variants(*), images:product_images(*)`).eq('isNew', true).eq('isActive', true).order('createdAt', { ascending: false }).limit(8)
       if (error) throw error
       set({ newArrivals: data || [] })
@@ -65,6 +97,11 @@ export const useProductStore = create((set, get) => ({
 
   fetchPromotions: async () => {
     try {
+      if (!supabase) {
+        console.warn('Supabase client not configured. fetchPromotions skipped.')
+        set({ promotions: [] })
+        return []
+      }
       const { data, error } = await supabase.from('products').select(`*, variants:product_variants(*), images:product_images(*)`).eq('isOnSale', true).eq('isActive', true).limit(8)
       if (error) throw error
       set({ promotions: data || [] })

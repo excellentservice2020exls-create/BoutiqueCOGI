@@ -1,21 +1,24 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import { fileURLToPath, URL } from 'node:url'
+import path from 'path'
 
-// https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      '@components': fileURLToPath(new URL('./src/components', import.meta.url)),
-      '@pages': fileURLToPath(new URL('./src/pages', import.meta.url)),
-      '@hooks': fileURLToPath(new URL('./src/hooks', import.meta.url)),
-      '@store': fileURLToPath(new URL('./src/store', import.meta.url)),
-      '@assets': fileURLToPath(new URL('./src/assets', import.meta.url)),
-      '@api': fileURLToPath(new URL('./src/api', import.meta.url)),
-      '@lib': fileURLToPath(new URL('./src/lib', import.meta.url)),
-      '@app': fileURLToPath(new URL('./src/app', import.meta.url)),
-      '@prisma': fileURLToPath(new URL('./src/prisma', import.meta.url))
-    }
-  }
+      '@': path.resolve(__dirname, './src'),
+      '@components': path.resolve(__dirname, './src/components'),
+      '@pages': path.resolve(__dirname, './src/pages'),
+      '@hooks': path.resolve(__dirname, './src/hooks'),
+      '@store': path.resolve(__dirname, './src/store'),
+      '@lib': path.resolve(__dirname, './src/lib'),
+      '@api': path.resolve(__dirname, './src/api'),
+      '@assets': path.resolve(__dirname, './src/assets'),
+      '@app': path.resolve(__dirname, './src/app'),
+      '@prisma': path.resolve(__dirname, './src/prisma')
+    },
+  },
+  server: {
+    port: 3000,
+  },
 })

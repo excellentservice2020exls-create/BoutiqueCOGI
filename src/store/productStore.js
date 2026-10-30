@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { supabase } from '../lib/supabase/supabaseClient'
+import { supabase, isSupabaseConfigured } from '../lib/supabase/supabaseClient'
 
 export const useProductStore = create((set, get) => ({
   products: [], categories: [], catalogs: [],
@@ -9,7 +9,7 @@ export const useProductStore = create((set, get) => ({
   fetchProducts: async (filters = {}) => {
     set({ isLoading: true, error: null })
     try {
-      if (!supabase) {
+      if (!isSupabaseConfigured) {
         const msg = 'Supabase client not configured. Set VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY.'
         console.warn(msg)
         set({ error: msg, products: [] })
@@ -29,7 +29,7 @@ export const useProductStore = create((set, get) => ({
   fetchProductBySlug: async (slug) => {
     set({ isLoading: true, error: null })
     try {
-      if (!supabase) {
+      if (!isSupabaseConfigured) {
         const msg = 'Supabase client not configured.'
         console.warn(msg)
         set({ error: msg, selectedProduct: null })
@@ -45,7 +45,7 @@ export const useProductStore = create((set, get) => ({
 
   fetchCategories: async () => {
     try {
-      if (!supabase) {
+      if (!isSupabaseConfigured) {
         console.warn('Supabase client not configured. fetchCategories skipped.')
         set({ categories: [] })
         return []
@@ -58,7 +58,7 @@ export const useProductStore = create((set, get) => ({
 
   fetchCatalogs: async () => {
     try {
-      if (!supabase) {
+      if (!isSupabaseConfigured) {
         console.warn('Supabase client not configured. fetchCatalogs skipped.')
         set({ catalogs: [] })
         return []
@@ -71,7 +71,7 @@ export const useProductStore = create((set, get) => ({
 
   fetchFeatured: async () => {
     try {
-      if (!supabase) {
+      if (!isSupabaseConfigured) {
         console.warn('Supabase client not configured. fetchFeatured skipped.')
         set({ featuredProducts: [] })
         return []
@@ -84,7 +84,7 @@ export const useProductStore = create((set, get) => ({
 
   fetchNewArrivals: async () => {
     try {
-      if (!supabase) {
+      if (!isSupabaseConfigured) {
         console.warn('Supabase client not configured. fetchNewArrivals skipped.')
         set({ newArrivals: [] })
         return []
@@ -97,7 +97,7 @@ export const useProductStore = create((set, get) => ({
 
   fetchPromotions: async () => {
     try {
-      if (!supabase) {
+      if (!isSupabaseConfigured) {
         console.warn('Supabase client not configured. fetchPromotions skipped.')
         set({ promotions: [] })
         return []

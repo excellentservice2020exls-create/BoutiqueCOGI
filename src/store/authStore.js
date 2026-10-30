@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
-import { supabase } from '../lib/supabase/supabaseClient'
+import { supabase, isSupabaseConfigured } from '../lib/supabase/supabaseClient'
 import { toast } from 'react-toastify'
 
 export const useAuthStore = create(
@@ -18,6 +18,9 @@ export const useAuthStore = create(
       login: async (email, password) => {
         set({ isLoading: true })
         try {
+          if (!isSupabaseConfigured) {
+            throw new Error('Supabase n\'est pas configuré. Ajoutez les variables d\'environnement pour activer l\'authentification.')
+          }
           const { data, error } = await supabase.auth.signInWithPassword({ email, password })
           if (error) throw error
           set({ user: data.user, session: data.session, isAuthenticated: true })
@@ -34,6 +37,9 @@ export const useAuthStore = create(
       register: async (email, password, userData) => {
         set({ isLoading: true })
         try {
+          if (!isSupabaseConfigured) {
+            throw new Error('Supabase n\'est pas configuré. Ajoutez les variables d\'environnement pour activer l\'inscription.')
+          }
           const { data, error } = await supabase.auth.signUp({
             email,
             password,
@@ -53,7 +59,9 @@ export const useAuthStore = create(
       logout: async () => {
         set({ isLoading: true })
         try {
-          await supabase.auth.signOut()
+          if (isSupabaseConfigured) {
+            await supabase.auth.signOut()
+          }
           set({ user: null, session: null, isAuthenticated: false })
           toast.info('Deconnexion reussie')
         } catch (error) {
@@ -66,6 +74,9 @@ export const useAuthStore = create(
       updateProfile: async (updates) => {
         set({ isLoading: true })
         try {
+          if (!isSupabaseConfigured) {
+            throw new Error('Supabase n\'est pas configuré. Impossible de mettre à jour le profil.')
+          }
           const { data, error } = await supabase.auth.updateUser({ data: updates })
           if (error) throw error
           set({ user: data.user })
@@ -80,6 +91,7 @@ export const useAuthStore = create(
       },
 
       refreshSession: async () => {
+        if (!isSupabaseConfigured) return
         const { data } = await supabase.auth.getSession()
         if (data.session) {
           const { data: userData } = await supabase.auth.getUser()
